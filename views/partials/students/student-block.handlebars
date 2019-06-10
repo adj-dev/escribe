@@ -1,0 +1,30 @@
+<div class="student-body" id="{{id}}-student" style="display:none">
+    <h3>Student: {{firstName}} {{lastName}}</h3>
+    {{#if Lessons}}
+    <ul id="example-list" class="list-group">
+        <li data-id="{{id}}" class="list-group-item">
+            <h3>Lessons:</h3>
+            {{#each Lessons}}
+
+        <li data-id="{{this.id}}" class="list-group-item lesson">
+            <span>
+                <h3>
+                    <a href="../api/lesson/{{this.id}}">{{this.topic}}</a>
+                </h3>
+                <p>{{this.createdAt}}</p>
+                <button class="btn btn-danger float-right">+</button>
+            </span>
+        </li>
+        {{/each}}
+
+        {{#each Lessons}}
+        {{>lessons/lesson-block}}
+        {{/each}}
+
+        </li>
+    </ul>
+    {{/if}}
+    {{#unless Lessons}}
+    No lessons to display. Add some to use the app!
+    {{/unless}}
+</div>

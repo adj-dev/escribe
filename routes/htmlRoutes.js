@@ -2,18 +2,31 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
+  app.get("/instructor/:id", function(req, res) {
+    let condition = {
+      include: [{ model: db.Student, include: db.Lesson }],
+      where: { id: req.params.id }
+    };
+
+    db.Instructor.findOne(condition).then(function(instructor) {
+      console.log(instructor);
+      res.render("instructor", instructor.dataValues);
+    });
+  });
+
+  app.get("/student/:id", function(req, res) {
+    let condition = { include: [db.Lesson], where: { id: req.params.id } };
+
+    db.Student.findOne(condition).then(function(student) {
+      res.render("student", student.dataValues);
     });
   });
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.render("example", {
         example: dbExample
       });
