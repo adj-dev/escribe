@@ -16,6 +16,7 @@ const strategy = new Strategy(
   //Passport will give us the username and password and the "done" function.
   function(email, password, done) {
     //our user is in Sequelize,
+    console.log("Here");
     db.Instructor.findOne({
       where: { email: email }
     })

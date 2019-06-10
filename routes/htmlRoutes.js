@@ -1,4 +1,5 @@
 var db = require("../models");
+var passport = require("passport");
 
 module.exports = function(app) {
   // Load index page
@@ -32,6 +33,15 @@ module.exports = function(app) {
       });
     });
   });
+
+  app.post(
+    "/login",
+    passport.authenticate("local", { failureRedirect: "/login" }),
+    function(req, res) {
+      console.log(req);
+      res.redirect("/instructor/1");
+    }
+  );
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
