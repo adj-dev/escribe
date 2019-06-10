@@ -20,6 +20,7 @@ const Instructor = sequelize.define("Instructor", {
     validate: {
       notEmpty: { msg: "Instructor `lastName` value cannot be an empty string" },
       isAlpha: { msg: "Instructor `lastName` value must contain only letters" }
+
     }
   },
   email: {

@@ -26,6 +26,4 @@ Lesson.associate = function (models) {
 
 
 
-
-
 module.exports = Lesson;
