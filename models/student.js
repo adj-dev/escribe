@@ -1,11 +1,13 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   // Instantiate the Student model
   const Student = sequelize.define("Student", {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: { msg: "Student `firstName` value cannot be an empty string" }, // don't allow empty strings
+        notEmpty: {
+          msg: "Student `firstName` value cannot be an empty string"
+        }, // don't allow empty strings
         isAlpha: { msg: "Student `firstName` value must contain only letters" } // will only allow letters
       }
     },
@@ -21,7 +23,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmail: { msg: "Student `email` value needs to be in standard email format e.g. foo@bar.com" } // checks for email format
+        isEmail: {
+          msg:
+            "Student `email` value needs to be in standard email format e.g. foo@bar.com"
+        } // checks for email format
       }
     },
     phone: {
@@ -34,11 +39,11 @@ module.exports = function (sequelize, DataTypes) {
     },
     notes: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     }
   });
 
-  Student.associate = function (models) {
+  Student.associate = function(models) {
     // Associate with Instructor model
     Student.belongsTo(models.Instructor, { foreignKey: { allowNull: false } });
 

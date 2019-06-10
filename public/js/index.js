@@ -84,16 +84,23 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+var handleLessonExpand = function() {
+  var id = $(this).attr("data-id");
+  console.log(id);
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
+  $(".lesson-body").css("display", "none");
+  $("#" + id + "-lesson").css("display", "block");
+};
+
+var handleStudentExpand = function() {
+  var id = $(this).attr("data-id");
+  console.log(id);
+
+  $(".student-body").css("display", "none");
+  $("#" + id + "-student").css("display", "block");
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$exampleList.on("click", ".lesson", handleLessonExpand);
+$exampleList.on("click", ".student", handleStudentExpand);

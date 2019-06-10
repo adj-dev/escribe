@@ -1,12 +1,14 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   // Instantiate the Lesson model
   const Lesson = sequelize.define("Lesson", {
     topic: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmpty: { msg: "Lesson `title` value cannot be an empty string" }, // don't allow empty strings
-        isAlphanumeric: { msg: "Lesson `title` value must contain only letters and/or numbers" } // will only allow alphanumeric characters
+        //isEmpty: { msg: "Lesson `topic` value cannot be an empty string" } // don't allow empty strings
+        // isAlphanumeric: {
+        //   msg: "Lesson `topic` value must contain only letters and/or numbers"
+        // } // will only allow alphanumeric characters
       }
     },
     body: {
@@ -15,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  Lesson.associate = function (models) {
+  Lesson.associate = function(models) {
     // Associate with Student model
     Lesson.belongsTo(models.Student, { foreignKey: { allowNull: false } });
   };

@@ -1,0 +1,32 @@
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h3>Instructor: {{firstName}} {{lastName}}</h3>
+        {{#if Students}}
+        <ul id="example-list" class="list-group">
+          <li data-id="{{id}}" class="list-group-item">
+            <h3>Roster:</h3>
+            {{#each Students}}
+          <li data-id="{{this.id}}" class="list-group-item student">
+            <h3>{{this.firstName}} {{this.lastName}}</h3>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+          {{#each Students}}
+          {{>students/student-block}}
+          {{/each}}
+
+          </li>
+        </ul>
+        {{/if}}
+        {{#unless Students}}
+        No students to display. Add some to use the app!
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
