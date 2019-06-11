@@ -5,6 +5,8 @@ router.use(require("./protection"));
 router.use(require("./resolveUser"));
 
 router.get("/", function(req, res) {
+  console.log("Home Route Hit");
+
   let { isInstructor, user } = req.user;
   if (isInstructor) {
     res.render("instructor", user);

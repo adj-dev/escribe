@@ -7,6 +7,8 @@
         <ul id="example-list" class="list-group">
           <li data-id="{{id}}" class="list-group-item">
             <h3>Roster:</h3>
+            <button data-id="{{id}}" class="btn btn-danger float-right add-student"
+              onclick="document.getElementById('addUserModal').style.display='block'">Add Student</button>
             {{#each Students}}
           <li data-id="{{this.id}}" class="list-group-item student">
             <h3>{{this.firstName}} {{this.lastName}}</h3>
@@ -30,6 +32,7 @@
     {{/if}}
   </div>
 </div>
+{{>addStudent/addStudent-block}}
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
