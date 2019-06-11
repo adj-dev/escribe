@@ -1,7 +1,64 @@
-<div>
-    <form method="post">
-        <input name="email" />
-        <input name="password" />
-        <input type="submit">
-    </form>
-</div>
+  <header>
+    <h1>Tutor Rooster Sign In<img src="images/rooster-logo.jpg" alt="rooster"
+        style="float:right;height:50px;margin-right:20px;"></h1>
+  </header>
+
+  <div class="w3-container">
+    <div id="tagline">
+      <img src="images/Hahn.png" style="height:100px;" alt="rooster">
+      <p>Tutor Rooster...<br>roster and lesson notes management for tutors.</p>
+    </div>
+  </div>
+
+  <div id="signInModal">
+    <div class="w3-card-4" style="width:50%;margin-top:3px;" id="startdiv">
+      <header class="w3-container w3-light-green">
+        <h3>Sign In  -- <em>Instructors and Students</em></h3>
+      </header>
+      <div class="w3-container">
+        <form>
+          <div id="formflow" style="margin-top:40px;margin-bottom:40px;">
+            <input placeholder="Your email address" type="email" name="useremail" class="inputA" />
+            <input placeholder="Your password" type="password" name="userpassword" class="inputA" />
+            <button onclick="document.getElementById('id05').style.display='none'" class="w3-hover-light-green"
+              type="submit" style="margin-top:30px;margin-left:6px;">Sign In</button>
+          </div>
+        </form>
+      </div>
+      <footer class="w3-container w3-light-green" class="modalfooter">
+        <img src="images/rooster-logo.jpg" alt="rooster" class="minirooster">
+        <h6 class='splash' style="float:right;" click-id="#signUpModal" id="tosignup"><em>New tutor? Create your account here!</em></h6>
+      </footer>
+    </div>
+  </div>
+  </div>
+  <div id="signUpModal" style='display:none'>
+    <div class="w3-card-4" style="width:50%;margin-top:3px;" id="newtutordiv">
+      <header class="w3-container w3-amber">
+        <h3>Sign Up -- <em>New Instructor</em></h3>
+      </header>
+      <div class="w3-container">
+        <form>
+          <div id="formflow">
+            <input placeholder="Your first name" name="tchrfirstname" class="inputA" required />
+            <input placeholder="Your last name" name="tchrlastname" class="inputA" required />
+            <input placeholder="Your email address" type="email" name="tchremail" class="inputA" required />
+            <input placeholder="Your phone number" name="tchrphone" class="inputA" required />
+            <input placeholder="Make password >= 8 digits" type="password" name="password" id="password" class="inputA"
+              required />
+            <input placeholder="Retype password" type="password" name="confirm_password" id="confirm_password"
+              class="inputA" required />
+            <button class="w3-hover-amber" type="submit" style="margin-top:10px;margin-left:6px;">Sign Up</button>
+            <span id='message'></span>
+          </div>
+        </form>
+      </div>
+      <footer class="w3-container w3-amber" class="modalfooter">
+        <img src="images/rooster-logo.jpg" alt="rooster" class="minirooster">
+        <h6 class='splash' style="float:right;" click-id="#signInModal" id="tologin"><em>Already registered? Switch to sign-in.</em></h6>
+      </footer>
+    </div>
+  </div>
+
+  <h5>"footer"</h5>
+  
