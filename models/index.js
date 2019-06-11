@@ -1,4 +1,5 @@
 const sequelize = require("../config");
+const User = require("./user.js");
 const Instructor = require("./instructor.js");
 const Student = require("./student.js");
 const Lesson = require("./lesson.js");
@@ -6,8 +7,9 @@ const Lesson = require("./lesson.js");
 
 
 // Make associations
-Instructor.associate({ Student });
-Student.associate({ Instructor, Lesson });
+User.associate({ Instructor, Student });
+Instructor.associate({ User, Student });
+Student.associate({ User, Instructor, Lesson });
 Lesson.associate({ Student });
 
 // Sync with the DB
@@ -18,4 +20,4 @@ sequelize.sync(syncConfig);
 
 
 
-module.exports = { Instructor, Student, Lesson };
+module.exports = { Instructor, Student, Lesson, User };

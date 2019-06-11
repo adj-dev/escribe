@@ -1,6 +1,7 @@
 // Pull in sequelize and db connection
 const Sequelize = require("sequelize");
 const sequelize = require("../config");
+// const { User, Instructor } = require("../models");
 
 
 
@@ -39,14 +40,13 @@ const Student = sequelize.define("Student", {
   notes: {
     type: Sequelize.TEXT,
     allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
   }
 });
 
+
+
 Student.associate = function (models) {
+  Student.belongsTo(models.User, { foreignKey: { allowNull: false } });
   Student.belongsTo(models.Instructor, { foreignKey: { allowNull: false } });
   Student.hasMany(models.Lesson, { onDelete: "cascade" });
 };
