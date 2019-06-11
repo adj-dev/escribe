@@ -25,7 +25,7 @@
   <div>
     {{#if Students}}
     {{#each Students}}
-    {{>students/student-block}}
+    {{>students/student-block id=id firstName=firstName lastName=lastName notes=notes display="none"}}
     {{/each}}
     {{/if}}
   </div>

@@ -1,8 +1,8 @@
-<div class="student-body" id="{{id}}-student" style="display:none">
-    <h3>Student: {{firstName}} {{lastName}}</h3>
+<div class="student-body" id="{{this.id}}-student" style="display:{{this.display}}">
+    <h3>Student: {{this.firstName}} {{this.lastName}}</h3>
     {{#if Lessons}}
-    <ul id="example-list" class="list-group">
-        <li data-id="{{id}}" class="list-group-item">
+    <ul id=" example-list" class="list-group">
+        <li data-id="{{this.id}}" class="list-group-item">
             <h3>Lessons:</h3>
             {{#each Lessons}}
 

@@ -2,8 +2,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config");
 
-
-
 const Student = sequelize.define("Student", {
   firstName: {
     type: Sequelize.STRING,
@@ -25,7 +23,10 @@ const Student = sequelize.define("Student", {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isEmail: { msg: "Student `email` value needs to be in standard email format e.g. foo@bar.com" } // checks for email format
+      isEmail: {
+        msg:
+          "Student `email` value needs to be in standard email format e.g. foo@bar.com"
+      } // checks for email format
     }
   },
   phone: {
@@ -46,20 +47,18 @@ const Student = sequelize.define("Student", {
   }
 });
 
-Student.associate = function (models) {
+Student.associate = function(models) {
   Student.belongsTo(models.Instructor, { foreignKey: { allowNull: false } });
   Student.hasMany(models.Lesson, { onDelete: "cascade" });
 };
 
-
-
 // Set up a method for authentication
-Student.prototype.validPassword = function (password) {
+Student.prototype.validPassword = function(password) {
   console.log("Password from the DB:", this.password);
   console.log("Password from the Client:", password);
-  return (this.password === password);
+  return this.password === password;
 };
 
-
+Student.sync();
 
 module.exports = Student;

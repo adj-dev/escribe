@@ -13,12 +13,17 @@ let session = require("express-session")({
   resave: false,
   saveUninitialized: false
 });
+passport.use(require("./auth_strategies/local"));
 
-passport.use(require("./auth_strategies/local"), function(email, password) {
-  console.log(email, password);
+passport.serializeUser(function(user, done) {
+  done(null, user.email);
 });
-// passport.serializeUser(Instructor);
-// passport.deserializeUser(Instructor);
+
+passport.deserializeUser(function(email, done) {
+  User.findById(email).then(user => {
+    done(null, user);
+  });
+});
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -39,8 +44,8 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
+app.use(require("./routes/authRoutes")(passport));
 
-
-app.listen(PORT, function () {
+app.listen(PORT, function() {
   console.log("Listening on port %s.", PORT);
 });

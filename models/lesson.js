@@ -2,8 +2,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config");
 
-
-
 // Instantiate the Lesson model
 const Lesson = sequelize.define("Lesson", {
   topic: {
@@ -11,7 +9,9 @@ const Lesson = sequelize.define("Lesson", {
     allowNull: false,
     validate: {
       isEmpty: { msg: "Lesson `title` value cannot be an empty string" }, // don't allow empty strings
-      isAlphanumeric: { msg: "Lesson `title` value must contain only letters and/or numbers" } // will only allow alphanumeric characters
+      isAlphanumeric: {
+        msg: "Lesson `title` value must contain only letters and/or numbers"
+      } // will only allow alphanumeric characters
     }
   },
   body: {
@@ -20,10 +20,10 @@ const Lesson = sequelize.define("Lesson", {
   }
 });
 
-Lesson.associate = function (models) {
-  Lesson.belongsTo(models.Student, { foreignKey: { allowNull: false } });
+Lesson.associate = function(models) {
+  Lesson.belongsTo(models.User, { foreignKey: { allowNull: false } });
 };
 
-
+Lesson.sync();
 
 module.exports = Lesson;

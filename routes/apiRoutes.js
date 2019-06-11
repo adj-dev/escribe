@@ -1,4 +1,5 @@
 var db = require("../models");
+var passport = require("passport");
 
 module.exports = function(app) {
   // Get all instructor data
@@ -17,8 +18,8 @@ module.exports = function(app) {
   app.get("/api/student/:id", function(req, res) {
     let condition = { include: [db.Lesson], where: { id: req.params.id } };
 
-    db.Student.findOne(condition).then(function(dbExamples) {
-      res.json(dbExamples);
+    db.Student.findOne(condition).then(function(student) {
+      res.json(student);
     });
   });
 
@@ -43,6 +44,32 @@ module.exports = function(app) {
     console.log(req.body);
     db.Lesson.create(req.body).then(function(lesson) {
       res.json(lesson);
+    });
+  });
+
+  app.post("/new_instructor", function(req, res) {
+    db.Instructor.create({
+      firstName: "Susy",
+      lastName: "Queww",
+      email: "foo@bar.com",
+      phone: "5554441234",
+      password: "1234"
+    }).then(result => {
+      res.json(result);
+    });
+  });
+
+  app.post("/new_student", function(req, res) {
+    db.Student.create({
+      firstName: "Ben",
+      lastName: "Shrewd",
+      email: "foo@bark.com",
+      password: "1234",
+      phone: "5554431234",
+      notes: "This guy really is nuts...",
+      InstructorId: 1
+    }).then(result => {
+      res.json(result);
     });
   });
 
