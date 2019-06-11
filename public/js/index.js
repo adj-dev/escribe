@@ -104,3 +104,24 @@ var handleStudentExpand = function() {
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".lesson", handleLessonExpand);
 $exampleList.on("click", ".student", handleStudentExpand);
+
+$("#password, #confirm_password").on("keyup", function () {
+  if ($("#password").val() === $("#confirm_password").val()) {
+    $("#message").html("Matching").css("color", "green");
+  } else {
+    $("#message").html("Not Matching").css("color", "red");}
+});
+
+$(document).ready(function () {
+  $("#tosignup").on("click", function () {
+    var signIn = $(this).attr("click-id");
+    $("#signInModal").hide();
+    $(signIn).fadeIn(500);
+  });
+
+  $("#tologin").on("click", function () {
+    var logIn = $(this).attr("click-id");
+    $("#signUpModal").hide();
+    $(logIn).fadeIn(500);
+  });
+});
