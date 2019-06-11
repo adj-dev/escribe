@@ -40,38 +40,42 @@ $.ajax ({
    notesval:notes,
 
   },
+
   success:function(response) {
 
-if(response=="success") {
-    document.getElementById("firstnameval"+id).innerHTML=firstname;
-    document.getElementById("lastnameval"+id).innerHTML=lastname;
-    document.getElementById("useremailval"+id).innerHTML=useremail;
-    document.getElementById("passwordval"+id).innerHTML=password;
-    document.getElementById("phonenubmerval"+id).innerHTML=phonenumber;
-    document.getElementById("notesval"+id).innerHTML=notes;
+    if(response=="success") {
+        
+        document.getElementById("firstnameval"+id).innerHTML=firstname;
+        document.getElementById("lastnameval"+id).innerHTML=lastname;
+        document.getElementById("useremailval"+id).innerHTML=useremail;
+        document.getElementById("passwordval"+id).innerHTML=password;
+        document.getElementById("phonenubmerval"+id).innerHTML=phonenumber;
+        document.getElementById("notesval"+id).innerHTML=notes;
 
     document.getElementById("edit_button"+id).style.display="block";
     document.getElementById("save_button"+id).style.display="none";
-   }
-  }
- });
+   
+     }
+    }
+  });
 }
 
-function delete_row(id)
-{
- $.ajax
- ({
-  type:'post',
-  url:'modify_records.php',
-  data:{
-   delete_row:'delete_row',
-   row_id:id,
-  },
-  success:function(response) {
-   if(response=="success")
-   {
+function delete_row(id) {
+    $.ajax ({
+        
+        type:'post',
+        url:'modify_records.php',
+        data:{
+        delete_row:'delete_row',
+        row_id:id,
+  
+    },
+success:function(response) {
+   
+    if(response=="success") {
+    
     var row=document.getElementById("row"+id);
-    row.parentNode.removeChild(row);
+        row.parentNode.removeChild(row);
    }
   }
  });
