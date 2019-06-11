@@ -44,13 +44,14 @@ app.use(passport.session());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(express.static("public"));
+
 // Routes
 require("./routes/apiRoutes")(app);
 //require("./routes/htmlRoutes")(app);
 
 app.use(require("./routes/authRoutes")(passport));
 app.use(require("./routes/protectedRoutes"));
-app.use(express.static("public"));
 
 app.listen(PORT, function() {
   console.log("Listening on port %s.", PORT);
