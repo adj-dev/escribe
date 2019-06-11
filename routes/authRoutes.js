@@ -6,39 +6,30 @@ module.exports = function(passport) {
     res.render("auth");
   });
   router.post(
-    "/login",
+    "/whodis",
     passport.authenticate("local"), //this is the magic
     function(req, res) {
       // If this function gets called, authentication was successful.
       // `req.user` contains the authenticated user.
       //res.sendFile()
-      console.log(req.user.dataValues);
-      let { isInstructor } = req.user.dataValues;
-      let condition;
-      if (isInstructor) {
-        condition = {
-          include: [
-            {
-              model: db.Instructor,
-              include: [{ model: db.Student, include: db.Lesson }]
-            }
-          ],
-          where: { id: req.user.dataValues.id }
-        };
-      } else {
-        condition = {
-          include: [{ model: db.Student, include: db.Lesson }],
-          where: { id: req.user.dataValues.id }
-        };
-      }
-
-      db.User.findOne(condition).then(function(user) {
-        res.json({ success: req.user ? "Yes" : "No", user: user });
-      });
-
-      //res.json({ success: req.user ? "Yes" : "No", user: req.user });
+      console.log(req.message);
+      res.redirect("/");
     }
   );
+
+  //   router.post("/whodis", function(req, res) {
+  //     passport.authenticate("local", function(err, user, info) {
+  //       if (err) {
+  //         return res.json(err);
+  //       }
+  //       if (!user) {
+  //         console.log(info.message);
+  //         return res.json(info);
+  //       } else {
+  //         return res.json({ message: "Success" });
+  //       }
+  //     })(req, res);
+  //   });
 
   // Create a new Instructor
   router.post("/signup", function(req, res) {
