@@ -56,7 +56,7 @@ database.ref().on("child_added", function (childSnapshot) {
         ' </td><td>' + newinstructorid +
         ' </td><td>' + newnotes + ' </td></tr>');
   
-      $("#trainname, #firstname, #lastname, #useremail, #password, #phonenumber, #instructor, #notes").val("");
+      $("#firstname, #lastname, #useremail, #password, #phonenumber, #instructor, #notes").val("");
       return false;
 
 },
