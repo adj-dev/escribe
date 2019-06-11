@@ -57,6 +57,4 @@ Student.prototype.validPassword = function(password) {
   return this.password === password;
 };
 
-Student.sync();
-
 module.exports = Student;

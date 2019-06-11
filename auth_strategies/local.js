@@ -19,12 +19,12 @@ const strategy = new Strategy(
     console.log(email);
 
     db.User.findOne({ where: { email: email } }).then(user => {
-      validateUser(user, password, done);
+      validateUser(user, email, password, done);
     });
   }
 );
 
-function validateUser(user, password, done) {
+function validateUser(user, email, password, done) {
   console.log(user);
 
   console.log(
@@ -35,7 +35,7 @@ function validateUser(user, password, done) {
     console.log("User " + email + " was not in the DB");
     return done(null, false, { message: "Incorrect email." });
   }
-  if (!instructor.validPassword(password)) {
+  if (!user.validPassword(password)) {
     // if (!(DBuser.password===password)) {
     return done(null, false, { message: "Incorrect password." });
   }

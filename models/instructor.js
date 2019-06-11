@@ -56,6 +56,4 @@ Instructor.prototype.validPassword = function(password) {
   return this.password === password;
 };
 
-Instructor.sync();
-
 module.exports = Instructor;

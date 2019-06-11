@@ -1,5 +1,4 @@
 var db = require("../models");
-var passport = require("passport");
 
 module.exports = function(app) {
   // Get all instructor data
@@ -23,14 +22,6 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new Instructor
-  app.post("/api/instructor", function(req, res) {
-    console.log(req.body);
-    db.Instructor.create(req.body).then(function(instructor) {
-      res.json(instructor);
-    });
-  });
-
   // Create a new Student
   app.post("/api/student", function(req, res) {
     console.log(req.body);
@@ -48,28 +39,42 @@ module.exports = function(app) {
   });
 
   app.post("/new_instructor", function(req, res) {
-    db.Instructor.create({
-      firstName: "Susy",
-      lastName: "Queww",
-      email: "foo@bar.com",
-      phone: "5554441234",
-      password: "1234"
-    }).then(result => {
-      res.json(result);
+    db.User.create({
+      email: "foo@bar.net",
+      password: "1235",
+      isInstructor: true
+    }).then(user => {
+      db.Instructor.create({
+        firstName: "Susy",
+        lastName: "Queww",
+        email: user.email,
+        phone: "5554441234",
+        UserId: user.id
+      }).then(result => {
+        res.json(result);
+      });
     });
   });
 
   app.post("/new_student", function(req, res) {
-    db.Student.create({
-      firstName: "Ben",
-      lastName: "Shrewd",
-      email: "foo@bark.com",
-      password: "1234",
-      phone: "5554431234",
-      notes: "This guy really is nuts...",
-      InstructorId: 1
-    }).then(result => {
-      res.json(result);
+    // simulating grabbing an id from the req.body
+    let instructorId = 1;
+    db.User.create({
+      email: "example@google.com",
+      password: "poop",
+      isInstructor: false
+    }).then(user => {
+      db.Student.create({
+        firstName: "Ben",
+        lastName: "Shrewd",
+        email: user.email,
+        phone: "5554431234",
+        notes: "This guy really is nuts...",
+        UserId: user.id,
+        InstructorId: instructorId
+      }).then(result => {
+        res.json(result);
+      });
     });
   });
 

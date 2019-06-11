@@ -21,9 +21,7 @@ const Lesson = sequelize.define("Lesson", {
 });
 
 Lesson.associate = function(models) {
-  Lesson.belongsTo(models.User, { foreignKey: { allowNull: false } });
+  Lesson.belongsTo(models.Student, { foreignKey: { allowNull: false } });
 };
-
-Lesson.sync();
 
 module.exports = Lesson;
