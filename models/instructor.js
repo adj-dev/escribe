@@ -41,15 +41,12 @@ const Instructor = sequelize.define("Instructor", {
       notEmpty: { msg: "Instructor `phone` value cannot be an empty string" },
       isNumeric: { msg: "Instructor `phone` value must contain only numbers" } // only allows numbers
     }
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
   }
 });
 
 Instructor.associate = function(models) {
-  Instructor.hasMany(models.student, { onDelete: "cascade" });
+  Instructor.belongsTo(models.User, { foreignKey: { allowNull: false } });
+  Instructor.hasMany(models.Student, { foreignKey: { allowNull: false } });
 };
 
 // Set up a method for authentication

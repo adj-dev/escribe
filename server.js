@@ -19,10 +19,8 @@ passport.serializeUser(function(user, done) {
   done(null, user.email);
 });
 
-passport.deserializeUser(function(email, done) {
-  User.findById(email).then(user => {
-    done(null, user);
-  });
+passport.deserializeUser(function(user, done) {
+  done(null, user.email);
 });
 
 // Middleware
