@@ -17,16 +17,8 @@ module.exports = function(app) {
   app.get("/api/student/:id", function(req, res) {
     let condition = { include: [db.Lesson], where: { id: req.params.id } };
 
-    db.Student.findOne(condition).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  // Create a new Instructor
-  app.post("/api/instructor", function(req, res) {
-    console.log(req.body);
-    db.Instructor.create(req.body).then(function(instructor) {
-      res.json(instructor);
+    db.Student.findOne(condition).then(function(student) {
+      res.json(student);
     });
   });
 
@@ -43,6 +35,46 @@ module.exports = function(app) {
     console.log(req.body);
     db.Lesson.create(req.body).then(function(lesson) {
       res.json(lesson);
+    });
+  });
+
+  app.post("/new_instructor", function(req, res) {
+    db.User.create({
+      email: "foo@bar.net",
+      password: "1235",
+      isInstructor: true
+    }).then(user => {
+      db.Instructor.create({
+        firstName: "Susy",
+        lastName: "Queww",
+        email: user.email,
+        phone: "5554441234",
+        UserId: user.id
+      }).then(result => {
+        res.json(result);
+      });
+    });
+  });
+
+  app.post("/new_student", function(req, res) {
+    // simulating grabbing an id from the req.body
+    let instructorId = 1;
+    db.User.create({
+      email: "example@google.com",
+      password: "poop",
+      isInstructor: false
+    }).then(user => {
+      db.Student.create({
+        firstName: "Ben",
+        lastName: "Shrewd",
+        email: user.email,
+        phone: "5554431234",
+        notes: "This guy really is nuts...",
+        UserId: user.id,
+        InstructorId: instructorId
+      }).then(result => {
+        res.json(result);
+      });
     });
   });
 

@@ -2,15 +2,15 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config");
 
-
-
 // Instantiate the Instructor model
 const Instructor = sequelize.define("Instructor", {
   firstName: {
     type: Sequelize.STRING,
     allowNull: false, // won't allow null
     validate: {
-      notEmpty: { msg: "Instructor `firstName` value cannot be an empty string" }, // don't allow empty strings
+      notEmpty: {
+        msg: "Instructor `firstName` value cannot be an empty string"
+      }, // don't allow empty strings
       isAlpha: { msg: "Instructor `firstName` value must contain only letters" } // will only allow letters
     }
   },
@@ -18,16 +18,20 @@ const Instructor = sequelize.define("Instructor", {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: { msg: "Instructor `lastName` value cannot be an empty string" },
+      notEmpty: {
+        msg: "Instructor `lastName` value cannot be an empty string"
+      },
       isAlpha: { msg: "Instructor `lastName` value must contain only letters" }
-
     }
   },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isEmail: { msg: "Instructor `email` value needs to be in standard email format e.g. foo@bar.com" } // checks for email format
+      isEmail: {
+        msg:
+          "Instructor `email` value needs to be in standard email format e.g. foo@bar.com"
+      } // checks for email format
     }
   },
   phone: {
@@ -40,22 +44,16 @@ const Instructor = sequelize.define("Instructor", {
   }
 });
 
-
-
-Instructor.associate = function (models) {
+Instructor.associate = function(models) {
   Instructor.belongsTo(models.User, { foreignKey: { allowNull: false } });
   Instructor.hasMany(models.Student, { foreignKey: { allowNull: false } });
 };
 
-
-
 // Set up a method for authentication
-Instructor.prototype.validPassword = function (password) {
+Instructor.prototype.validPassword = function(password) {
   console.log("Password from the DB:", this.password);
   console.log("Password from the Client:", password);
-  return (this.password === password);
+  return this.password === password;
 };
-
-
 
 module.exports = Instructor;

@@ -13,10 +13,6 @@
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
-          {{#each Students}}
-          {{>students/student-block}}
-          {{/each}}
-
           </li>
         </ul>
         {{/if}}
@@ -25,6 +21,13 @@
         {{/unless}}
       </div>
     </div>
+  </div>
+  <div>
+    {{#if Students}}
+    {{#each Students}}
+    {{>students/student-block id=id firstName=firstName lastName=lastName notes=notes display="none"}}
+    {{/each}}
+    {{/if}}
   </div>
 </div>
 
