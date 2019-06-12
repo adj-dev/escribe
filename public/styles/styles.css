@@ -2,13 +2,6 @@
   line-height: 2.5;
 }
 
-h1,
-h5 {
-  color: white;
-  background-color: darkred;
-  padding: 6px 24px;
-}
-
 body {
   /* border: 1px solid red; */
   height: 100vh;
@@ -85,7 +78,7 @@ body {
   font-size: 0.75em;
 }
 
-#tagline {
+/* #tagline {
   width: 55%;
   display: flex;
   flex-wrap: wrap;
@@ -93,7 +86,7 @@ body {
   align-items: center;
   font-size: 1.5em;
   margin: 5px auto;
-}
+} */
 
 #startdiv,
 #newtutordiv {
@@ -131,13 +124,4 @@ body {
 .minirooster {
   margin: 12px 0;
   height: 30px;
-}
-
-.inputA {
-  margin: 8px 6px;
-  width: 234px;
-}
-
-.inputA:hover {
-  border: 2px solid grey;
 }
