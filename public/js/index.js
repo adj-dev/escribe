@@ -122,42 +122,42 @@ $("#password, #confirm_password").on("keyup", function () {
   }
 });
 
-$(document).ready(function () {
-  $("#tosignup").on("click", function () {
-    var signIn = $(this).attr("click-id");
-    // $("#signInModal").hide();
-    $(signIn).fadeIn(500);
-  });
-
-  $("#tologin").on("click", function () {
-    var logIn = $(this).attr("click-id");
-    $("#signUpModal").hide();
-    $(logIn).fadeIn(500);
-  });
-
+$(function () {
   // toggles the display for student modal
   $(document).on("click", "#student-modal", function (event) {
     event.preventDefault();
     // show the modal
-    $("#addUserModal").css("display", "flex");
+    console.log(event);
+    $("#addStudentModal").css("display", "flex");
   });
 
-  $(document).on("click", ".modal", function (event) {
-    console.log(event);
-    // $(".modal").hide();
+  // toggles the display for lesson modal
+  $(document).on("click", "#lesson-modal", function (event) {
+    event.preventDefault();
+    // show the modal
+    $("#addLessonModal").css("display", "flex");
   });
 
   // event handler to add a student
   $(document).on("click", "#add-student", function (event) {
-    // show the modal
     event.preventDefault();
     console.log(event);
-    $("#addUserModal").hide();
+    // hide the modal
+    $("#addStudentModal").hide();
+  });
+
+  // event handler to add a lesson
+  $(document).on("click", "#add-lesson", function (event) {
+    event.preventDefault();
+    console.log(event);
+    // hide the modal
+    $("#addLessonModal").hide();
   });
 
 
   // Cancel model
   $(document).on("click", "#cancel-modal", function () {
-    $("#addUserModal").hide();
-  })
+    $("#addStudentModal").hide();
+    $("#addLessonModal").hide();
+  });
 });

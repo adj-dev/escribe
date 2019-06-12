@@ -114,31 +114,9 @@ body {
   margin: 10px auto 10px auto;
 }
 
-/* .modalfooter {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.minirooster {
-  margin: 12px 0;
-  height: 30px;
-}
-
-.inputA {
-  margin: 8px 6px;
-  width: 234px;
-}
-
-.inputA:hover {
-  border: 2px solid grey;
-} */
-
-
 /* Student modal */
 
 .modal {
-  display: none;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -146,6 +124,11 @@ body {
   right: 0;
   height: inherit;
   background-color: #0000006c;
+}
+
+#addStudentModal,
+#addLessonModal {
+  display: none;
 }
 
 .add-student-container {
@@ -232,12 +215,17 @@ textarea#notes:focus {
 
 .form-modal > .modal-student-input > button.form-button {
   background-color: #f0f0f0;
-
 }
 
 .form-modal > .modal-student-input > button.form-button:hover {
   cursor: pointer;
   background-color: #3567d3;
   color: #f0f0f0;
+}
+
+.form-modal > .modal-student-input > button.form-button:focus {
+  background-color: #3567d3;
+  color: #f0f0f0;
+  outline: none;
 }
 
