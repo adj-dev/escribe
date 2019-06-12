@@ -5,7 +5,7 @@ const sendmail = require("sendmail")();
 router.use(require("./protection"));
 router.use(require("./resolveUser"));
 
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
   console.log("Home Route Hit");
 
   let { isInstructor, user } = req.user;
@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
   }
 });
 
-router.get("/api/instructor/:id", function(req, res) {
+router.get("/api/instructor/:id", function (req, res) {
   if (!isNotImposter(req)) {
     return res.status(403).json("That is not your data!");
   }
@@ -25,40 +25,41 @@ router.get("/api/instructor/:id", function(req, res) {
     where: { id: req.params.id }
   };
 
-  db.Instructor.findOne(condition).then(function(instructor) {
+  db.Instructor.findOne(condition).then(function (instructor) {
     res.json(instructor);
   });
 });
 
 // Get all student data
-router.get("/api/student/:id", function(req, res) {
+router.get("/api/student/:id", function (req, res) {
   if (!hasStudent(req)) {
     return res.status(403).json("That is not your data!");
   }
 
   let condition = { include: [db.Lesson], where: { id: req.params.id } };
 
-  db.Student.findOne(condition).then(function(student) {
+  db.Student.findOne(condition).then(function (student) {
     res.json(student);
   });
 });
 
 // Get a lesson by id
-router.get("/api/lesson/:id", function(req, res) {
+router.get("/api/lesson/:id", function (req, res) {
   if (!hasLesson(req)) {
     return res.status(403).json("That is not your data!");
   }
   let condition = { where: { id: req.params.id } };
 
-  db.Lesson.findOne(condition).then(function(lesson) {
+  db.Lesson.findOne(condition).then(function (lesson) {
     res.json(lesson);
   });
 });
 
 // Create a new Student
-router.post("/api/student", function(req, res) {
+router.post("/api/student", function (req, res) {
   let instructorId = req.user.user.id;
   console.log(req.body);
+
   let newStudent = req.body;
 
   db.User.create({
@@ -78,7 +79,7 @@ router.post("/api/student", function(req, res) {
           user.password +
           "<br><br>Click <a href='https://pure-wave-91989.herokuapp.com/' target='_blank'>here</a> to log in."
       },
-      function(err, reply) {
+      function (err, reply) {
         console.dir(reply);
         console.log("There");
       }
@@ -98,14 +99,14 @@ router.post("/api/student", function(req, res) {
 });
 
 // Create a new Lesson
-router.post("/api/lesson", function(req, res) {
+router.post("/api/lesson", function (req, res) {
   console.log(req.body);
-  db.Lesson.create(req.body).then(function(lesson) {
+  db.Lesson.create(req.body).then(function (lesson) {
     res.json(lesson);
   });
 });
 
-router.post("/new_instructor", function(req, res) {
+router.post("/new_instructor", function (req, res) {
   db.User.create({
     email: "foo@bar.net",
     password: "1235",
@@ -123,7 +124,7 @@ router.post("/new_instructor", function(req, res) {
   });
 });
 
-router.post("/new_student", function(req, res) {
+router.post("/new_student", function (req, res) {
   // simulating grabbing an id from the req.body
   let instructorId = 1;
   db.User.create({
@@ -143,7 +144,7 @@ router.post("/new_student", function(req, res) {
           user.password +
           "<br><br>Click <a href='https://pure-wave-91989.herokuapp.com/' target='_blank'>here</a> to log in."
       },
-      function(err, reply) {
+      function (err, reply) {
         console.dir(reply);
         console.log("There");
       }
@@ -162,7 +163,7 @@ router.post("/new_student", function(req, res) {
   });
 });
 
-router.post("/new_lesson", function(req, res) {
+router.post("/new_lesson", function (req, res) {
   // simulating grabbing an id from the req.body
   let StudentId = 2;
   db.Lesson.create({
@@ -176,48 +177,48 @@ router.post("/new_lesson", function(req, res) {
 });
 
 // Edit an Instructor
-router.put("/api/instructor/:id", function(req, res) {
+router.put("/api/instructor/:id", function (req, res) {
   if (!isNotImposter(req)) {
     return res.status(403).json("That is not your data!");
   }
   let { id } = req.params;
   console.log(req.body);
   let condition = { where: { id: id } };
-  db.Instructor.update(req.body, condition).then(function(instructor) {
+  db.Instructor.update(req.body, condition).then(function (instructor) {
     res.json(instructor);
   });
 });
 // Edit a Student
-router.put("/api/student/:id", function(req, res) {
+router.put("/api/student/:id", function (req, res) {
   if (!hasStudent(req)) {
     return res.status(403).json("That is not your data!");
   }
   let { id } = req.params;
   console.log(req.body);
   let condition = { where: { id: id } };
-  db.Student.update(req.body, condition).then(function(student) {
+  db.Student.update(req.body, condition).then(function (student) {
     res.json(student);
   });
 });
 // Edit a Lesson
-router.put("/api/lesson/:id", function(req, res) {
+router.put("/api/lesson/:id", function (req, res) {
   if (!hasLesson(req)) {
     return res.status(403).json("That is not your data!");
   }
   let { id } = req.params;
   console.log(req.body);
   let condition = { where: { id: id } };
-  db.Lesson.update(req.body, condition).then(function(lesson) {
+  db.Lesson.update(req.body, condition).then(function (lesson) {
     res.json(lesson);
   });
 });
 
 // Delete an example by id
-router.delete("/api/instructor/:id", function(req, res) {
+router.delete("/api/instructor/:id", function (req, res) {
   if (!isNotImposter(req)) {
     return res.status(403).json("That is not your data!");
   }
-  db.Instructor.destroy({ where: { id: req.params.id } }).then(function(
+  db.Instructor.destroy({ where: { id: req.params.id } }).then(function (
     instructor
   ) {
     res.json(instructor);
@@ -225,26 +226,26 @@ router.delete("/api/instructor/:id", function(req, res) {
 });
 
 // Delete an example by id
-router.delete("/api/student/:id", function(req, res) {
+router.delete("/api/student/:id", function (req, res) {
   if (!hasStudent(req)) {
     return res.status(403).json("That is not your data!");
   }
-  db.Student.destroy({ where: { id: req.params.id } }).then(function(student) {
+  db.Student.destroy({ where: { id: req.params.id } }).then(function (student) {
     res.json(student);
   });
 });
 
 // Delete an example by id
-router.delete("/api/lesson/:id", function(req, res) {
+router.delete("/api/lesson/:id", function (req, res) {
   if (!hasLesson(req)) {
     return res.status(403).json("That is not your data!");
   }
-  db.Lesson.destroy({ where: { id: req.params.id } }).then(function(lesson) {
+  db.Lesson.destroy({ where: { id: req.params.id } }).then(function (lesson) {
     res.json(lesson);
   });
 });
 
-let isNotImposter = function(req) {
+let isNotImposter = function (req) {
   //this should always be true if this route fires because of our middlewares
   if (req.user) {
     //get the current user's id and the id of the instructor whos data they want
@@ -260,7 +261,7 @@ let isNotImposter = function(req) {
   return true;
 };
 
-let hasStudent = function(req) {
+let hasStudent = function (req) {
   if (req.user) {
     //get the current user's id and the id of the instructor whos data they want
     let studentId = parseFloat(req.params.id);
@@ -282,7 +283,7 @@ let hasStudent = function(req) {
   return true;
 };
 
-let hasLesson = function(req) {
+let hasLesson = function (req) {
   if (req.user) {
     let lessonId = parseFloat(req.params.id);
 

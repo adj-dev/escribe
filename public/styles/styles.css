@@ -181,14 +181,14 @@ body {
   width: 45%;
 }
 
-textarea#notes {
+textarea#new-notes {
   border: 1px solid #3567d3;
   border-radius: 12px;
   font-size: 1.3em;
   padding: 3px 10px;
 }
 
-textarea#notes:focus {
+textarea#new-notes:focus {
   border: 2px solid #3567d3;
   border-radius: 12px;
   outline: none;
