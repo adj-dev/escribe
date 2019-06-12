@@ -1,69 +1,130 @@
-<header>
-    <h1>Tutor Rooster Sign In<img src="images/rooster-logo.jpg" alt="rooster"
-            style="float:right;height:50px;margin-right:20px;"></h1>
-</header>
+<nav>
+  <div class="brand">
+    <h1>enscribe</h1>
+  </div>
+  <div class="links">
+    <a href="/whodis">Login</a>
+    <a href="/about">About</a>
+  </div>
+</nav>
 
-<div class="w3-container">
-    <div id="tagline">
-        <img src="images/Hahn.png" style="height:100px;" alt="rooster">
-        <p>Tutor Rooster...<br>roster and lesson notes management for tutors.</p>
-    </div>
+<div class="tagline">
+  <p>Welcome to <span>enscribe</span>, a note-taking app for tutors.</p>
 </div>
 
-<div id="signInModal">
-    <div class="w3-card-4" style="width:50%;margin-top:3px;" id="startdiv">
-        <header class="w3-container w3-light-green">
-            <h3>Sign In</h3>
-        </header>
-        <div class="w3-container">
-            <div id="formflow" style="margin-top:40px;margin-bottom:40px;">
-                <input id="login-email" placeholder="Your email address" type="email" name="email" class="inputA" />
-                <input id="login-password" placeholder="Your password" type="password" name="password" class="inputA" />
-                <p id="login-message" style="color:red;"></p>
-                <button id="login-button">Sign In</button>
-            </div>
-        </div>
-        <footer class="w3-container w3-light-green" class="modalfooter">
-            <img src="images/rooster-logo.jpg" alt="rooster" class="minirooster">
-            <h6 class='splash' style="float:right;"
-                onclick="document.getElementById('signInModal').style.display='none';document.getElementById('signUpModal').style.display='block'"
-                click-id="#signUpModal" id="tosignup"><em>New tutor? Create your
-                    account here!</em></h6>
-        </footer>
+{{!-- Display sign-in form --}}
+
+<div class="container-login">
+  <div class="header-login">
+    <h1>Login</h1>
+  </div>
+  <div class="form-login">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="login-email" placeholder="me@example.com" type="email" name="email" />
     </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="login-password" type="password" name="password" />
+    </div>
+    <div class="input-control">
+      <button class="form-button" id="login-button">Sign In</button>
+      <span id="to-signup">Create Account</span>
+    </div>
+  </div>
 </div>
+
+{{!-- <div id="signInModal">
+  <div class="w3-card-4" style="width:50%;margin-top:3px;" id="startdiv">
+    <header class="w3-container w3-light-green">
+      <h3>Sign In</h3>
+    </header>
+    <div class="w3-container">
+      <div id="formflow" style="margin-top:40px;margin-bottom:40px;">
+        <input id="login-email" placeholder="Your email address" type="email" name="email" class="inputA" />
+        <input id="login-password" placeholder="Your password" type="password" name="password" class="inputA" />
+        <p id="login-message" style="color:red;"></p>
+        <button id="login-button">Sign In</button>
+      </div>
+    </div>
+    <footer class="w3-container w3-light-green" class="modalfooter">
+      <h6 class='splash' style="float:right;"
+        onclick="document.getElementById('signInModal').style.display='none';document.getElementById('signUpModal').style.display='block'"
+        click-id="#signUpModal" id="tosignup"><em>New tutor? Create your
+          account here!</em></h6>
+    </footer>
+  </div>
+</div> --}}
+
+{{!-- Display sign-up form --}}
+
+<div class="container-signup">
+  <div class="header-login">
+    <h1>Sign Up</h1>
+  </div>
+  <div class="form-login">
+    <div class="form-group">
+      <label for="first-name">First Name:</label>
+      <input id="first-name" placeholder="" type="text" name="first-name" />
+    </div>
+    <div class="form-group">
+      <label for="last-name">Last Name:</label>
+      <input id="last-name" placeholder="" type="text" name="last-name" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="new-email" placeholder="me@example.com" type="email" name="email" />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input id="new-phone" placeholder="555-555-5555" type="text" name="phone" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="new-password" type="password" name="password" />
+    </div>
+    <div class="form-group">
+      <label for="cpassword">Confirm Password:</label>
+      <input id="confirm-password" type="password" name="cpassword" />
+    </div>
+    <div class="input-control">
+      <button class="form-button" id="login-button">Sign In</button>
+      <span id="to-login">Already have an account?</span>
+    </div>
+  </div>
 </div>
+
 <div id="signUpModal" style='display:none'>
-    <div class="w3-card-4" style="width:50%;margin-top:3px;" id="newtutordiv">
-        <header class="w3-container w3-amber">
-            <h3>Sign Up -- <em>New Instructor</em></h3>
-        </header>
-        <div class="w3-container">
-            <form>
-                <div id="formflow">
-                    <input placeholder="Your first name" name="tchrfirstname" class="inputA" required />
-                    <input placeholder="Your last name" name="tchrlastname" class="inputA" required />
-                    <input placeholder="Your email address" type="email" name="tchremail" class="inputA" required />
-                    <input placeholder="Your phone number" name="tchrphone" class="inputA" required />
-                    <input placeholder="Make password >= 8 digits" type="password" name="password" id="password"
-                        class="inputA" required />
-                    <input placeholder="Retype password" type="password" name="confirm_password" id="confirm_password"
-                        class="inputA" required />
-                    <button class="w3-hover-amber" type="submit" style="margin-top:10px;margin-left:6px;">Sign
-                        Up</button>
-                    <span id='message'></span>
-                </div>
-            </form>
-        </div>
-        <footer class="w3-container w3-amber" class="modalfooter">
-            <img src="images/rooster-logo.jpg" alt="rooster" class="minirooster">
-            <h6 class='splash' style="float:right;"
-                onclick="document.getElementById('signInModal').style.display='block';document.getElementById('signUpModal').style.display='none'"
-                click-id="#signInModal" id="tologin"><em>Already registered? Switch
-                    to sign-in.</em></h6>
-        </footer>
+  <div class="w3-card-4" style="width:50%;margin-top:3px;" id="newtutordiv">
+    <header class="w3-container w3-amber">
+      <h3>Sign Up -- <em>New Instructor</em></h3>
+    </header>
+    <div class="w3-container">
+      <div id="formflow">
+        <input id="fn-new" placeholder="Your first name" name="tchrfirstname" class="inputA" required />
+        <input id="ln-new" placeholder="Your last name" name="tchrlastname" class="inputA" required />
+        <input id="email-new" placeholder="Your email address" type="email" name="tchremail" class="inputA" required />
+        <input id="phone-new" placeholder="Your phone number" name="tchrphone" class="inputA" required />
+        <input placeholder="Make password >= 8 digits" type="password" name="password" id="password-new" class="inputA"
+          required />
+        <input placeholder="Retype password" type="password" name="confirm-password" id="confirm-password"
+          class="inputA" required />
+        <button class="w3-hover-amber" type="submit" style="margin-top:10px;margin-left:6px;" id="signup-btn">Sign
+          Up</button>
+        <span id='message'></span>
+      </div>
     </div>
+    <footer class="w3-container w3-amber" class="modalfooter">
+      <h6 class='splash' style="float:right;"
+        onclick="document.getElementById('signInModal').style.display='block';document.getElementById('signUpModal').style.display='none'"
+        click-id="#signInModal" id="tologin"><em>Already registered? Switch
+          to sign-in.</em></h6>
+    </footer>
+  </div>
 </div>
 
-<h5>"footer"</h5>
-<script src="./js/login.js"></script>
+
+{{!-- Footer --}}
+
+{{!-- <h5>"footer"</h5> --}}
+<script src="./js/auth.js"></script>

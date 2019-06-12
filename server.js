@@ -15,11 +15,11 @@ let session = require("express-session")({
 });
 passport.use(require("./auth_strategies/local"));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.email);
 });
 
-passport.deserializeUser(function(email, done) {
+passport.deserializeUser(function (email, done) {
   let condititon = {
     where: { email: email }
   };
@@ -32,7 +32,7 @@ passport.deserializeUser(function(email, done) {
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(require("cookie-parser")());
-app.use(require("morgan")("combined"));
+// app.use(require("morgan")("combined"));
 
 app.use(session);
 //initialize Passport and let Express know about it
@@ -54,6 +54,6 @@ require("./routes/apiRoutes")(app);
 app.use(require("./routes/authRoutes")(passport));
 app.use(require("./routes/protectedRoutes"));
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("Listening on port %s.", PORT);
 });
