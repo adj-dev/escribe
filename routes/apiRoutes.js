@@ -22,6 +22,15 @@ module.exports = function(app) {
     });
   });
 
+  // Get a lesson by id
+  app.get("/api/lesson/:id", function(req, res) {
+    let condition = { where: { id: req.params.id } };
+
+    db.Lesson.findOne(condition).then(function(lesson) {
+      res.json(lesson);
+    });
+  });
+
   // Create a new Student
   app.post("/api/student", function(req, res) {
     console.log(req.body);
@@ -60,21 +69,34 @@ module.exports = function(app) {
     // simulating grabbing an id from the req.body
     let instructorId = 1;
     db.User.create({
-      email: "example@google.com",
+      email: "e@google.com",
       password: "poop",
       isInstructor: false
     }).then(user => {
       db.Student.create({
-        firstName: "Ben",
-        lastName: "Shrewd",
+        firstName: "Joe",
+        lastName: "Binger",
         email: user.email,
-        phone: "5554431234",
-        notes: "This guy really is nuts...",
+        phone: "5554631234",
+        notes: "This guy is a mellow character.",
         UserId: user.id,
         InstructorId: instructorId
       }).then(result => {
         res.json(result);
       });
+    });
+  });
+
+  app.post("/new_lesson", function(req, res) {
+    // simulating grabbing an id from the req.body
+    let StudentId = 2;
+    db.Lesson.create({
+      topic: "THRASH",
+      body:
+        "THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER THRASHER ",
+      StudentId
+    }).then(lesson => {
+      res.json(lesson);
     });
   });
 
