@@ -86,6 +86,8 @@ var handleFormSubmit = function(event) {
 // Remove the example from the db and refresh the list
 var handleLessonExpand = function() {
   var id = $(this).attr("data-id");
+  $(".lesson").css("background-color", "white");
+  $(this).css("background-color", "whitesmoke");
   console.log(id);
 
   $(".lesson-body").css("display", "none");
@@ -94,32 +96,41 @@ var handleLessonExpand = function() {
 
 var handleStudentExpand = function() {
   var id = $(this).attr("data-id");
+  $(".student").css("background-color", "white");
+  $(".lesson").css("background-color", "white");
+  $(this).css("background-color", "whitesmoke");
   console.log(id);
 
   $(".student-body").css("display", "none");
+  $(".lesson-body").css("display", "none");
   $("#" + id + "-student").css("display", "block");
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".lesson", handleLessonExpand);
-$exampleList.on("click", ".student", handleStudentExpand);
+$(document).on("click", ".lesson", handleLessonExpand);
+$(document).on("click", ".student", handleStudentExpand);
 
-$("#password, #confirm_password").on("keyup", function () {
+$("#password, #confirm_password").on("keyup", function() {
   if ($("#password").val() === $("#confirm_password").val()) {
-    $("#message").html("Matching").css("color", "green");
+    $("#message")
+      .html("Matching")
+      .css("color", "green");
   } else {
-    $("#message").html("Not Matching").css("color", "red");}
+    $("#message")
+      .html("Not Matching")
+      .css("color", "red");
+  }
 });
 
-$(document).ready(function () {
-  $("#tosignup").on("click", function () {
+$(document).ready(function() {
+  $("#tosignup").on("click", function() {
     var signIn = $(this).attr("click-id");
     $("#signInModal").hide();
     $(signIn).fadeIn(500);
   });
 
-  $("#tologin").on("click", function () {
+  $("#tologin").on("click", function() {
     var logIn = $(this).attr("click-id");
     $("#signUpModal").hide();
     $(logIn).fadeIn(500);
