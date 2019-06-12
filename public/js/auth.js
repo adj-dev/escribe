@@ -2,12 +2,10 @@ $(function () {
 
   //var attempt = 3; // Variable to count number of attempts.
   // Below function Executes on click of login button.
-  $(document).on("click", "#login-button", function (event) {
+  $(document).on("click", "#login-btn", function (event) {
     event.preventDefault();
-    let email = $("#login-email").val();
-    let password = $("#login-password").val();
-    console.log(email);
-    console.log(password);
+    let email = $("#login-email").val().trim();
+    let password = $("#login-password").val().trim();
 
     let body = { email, password };
     let url = "/whodis";
@@ -23,7 +21,7 @@ $(function () {
       })
       .catch(function (error) {
         if (error) {
-          $("#login-message").html("Incorrect username or password");
+          $(".invalid-login").show();
         }
       });
   });
@@ -36,7 +34,6 @@ $(function () {
     $(".container-login").hide();
     // Show the sign-up form
     $(".container-signup").show();
-    // $("#signUpModal").show();
   });
 
 
@@ -56,11 +53,11 @@ $(function () {
   $(document).on("click", "#signup-btn", function (event) {
     event.preventDefault();
 
-    let firstName = $("#fn-new").val().trim();
-    let lastName = $("#ln-new").val().trim();
-    let email = $("#email-new").val().trim();
-    let phone = $("#phone-new").val().trim();
-    let password = $("#password-new").val().trim();
+    let firstName = $("#first-name").val().trim();
+    let lastName = $("#last-name").val().trim();
+    let email = $("#new-email").val().trim();
+    let phone = $("#phone").val().trim();
+    let password = $("#new-password").val().trim();
 
     //----------------------------------------//
     //                                        //

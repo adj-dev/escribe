@@ -28,8 +28,11 @@
       <input id="login-password" type="password" name="password" />
     </div>
     <div class="input-control">
-      <button class="form-button" id="login-button">Sign In</button>
+      <button class="form-button" id="login-btn">Login</button>
       <span id="to-signup">Create Account</span>
+      <div class="invalid-login">
+        <span>Incorrect username or password</span>
+      </div>
     </div>
   </div>
 </div>
@@ -77,7 +80,7 @@
     </div>
     <div class="form-group">
       <label for="phone">Phone Number:</label>
-      <input id="new-phone" placeholder="555-555-5555" type="text" name="phone" />
+      <input id="phone" placeholder="555-555-5555" type="text" name="phone" />
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
@@ -88,13 +91,13 @@
       <input id="confirm-password" type="password" name="cpassword" />
     </div>
     <div class="input-control">
-      <button class="form-button" id="login-button">Sign In</button>
+      <button class="form-button" id="signup-btn">Sign Up</button>
       <span id="to-login">Already have an account?</span>
     </div>
   </div>
 </div>
 
-<div id="signUpModal" style='display:none'>
+{{!-- <div id="signUpModal" style='display:none'>
   <div class="w3-card-4" style="width:50%;margin-top:3px;" id="newtutordiv">
     <header class="w3-container w3-amber">
       <h3>Sign Up -- <em>New Instructor</em></h3>
@@ -121,7 +124,7 @@
           to sign-in.</em></h6>
     </footer>
   </div>
-</div>
+</div> --}}
 
 
 {{!-- Footer --}}

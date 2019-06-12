@@ -84,6 +84,7 @@ nav {
 .form-login {
   max-width: 340px;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 
 .form-group {
@@ -107,7 +108,7 @@ input {
 }
 
 input::placeholder {
-  color: #f0f0f09d;
+  color: #f0f0f046;
 }
 
 input:focus {
@@ -121,6 +122,8 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 10px;
+  padding-top: 40px;
+  position: relative;
 }
 
 .input-control > span:hover {
@@ -141,6 +144,22 @@ input:focus {
 .form-button:hover {
   cursor: pointer;
   background-color: #f0f0f0;
+}
+
+.invalid-login {
+  display: none;
+  position: absolute;
+  width: inherit;
+  bottom: 75px;
+  padding-left: 39px;
+}
+
+.invalid-login > span {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #ff9252;
 }
 
 /* Hide the sign-in div upon page load */
