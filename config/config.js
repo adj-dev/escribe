@@ -17,11 +17,15 @@ module.exports = {
     }
   },
   test: {
-    useEnvVariable: "JAWSDB_URL",
-    dialect: "mysql"
+    username: "root",
+    password: null,
+    database: "testdb",
+    host: "localhost",
+    dialect: "mysql",
+    logging: false
   },
   production: {
-    useEnvVariable: "JAWSDB_URL",
+    use_env_variable: "JAWSDB_URL",
     dialect: "mysql"
   }
 };
