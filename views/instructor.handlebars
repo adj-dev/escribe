@@ -3,7 +3,7 @@
     <div class="section-header">
       <h3>{{firstName}} {{lastName}}'s Roster</h3>
       <button data-id="{{id}}" class="btn btn-danger float-right add-student"
-        onclick="document.getElementById('addUserModal').style.display='block'">Add Student</button>
+        onclick="document.getElementById('addUserModal').style.display='block'" id="student-modal">Add Student</button>
     </div>
     {{#if Students}}
     {{#each Students}}
@@ -25,8 +25,7 @@
     {{/if}}
   </div>
 </div>
-<div>
-  {{>addStudent/addStudent-block}}
+{{!-- <div> --}}
+{{>addStudent/addStudent-block}}
+{{!-- </div> --}}
 </div>
-</div>
-<script src="/js/index.js"></script>

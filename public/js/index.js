@@ -1,90 +1,90 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+// // Get references to page elements
+// var $exampleText = $("#example-text");
+// var $exampleDescription = $("#example-description");
+// var $submitBtn = $("#submit");
+// var $exampleList = $("#example-list");
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
+// // The API object contains methods for each kind of request we'll make
+// var API = {
+//   saveExample: function(example) {
+//     return $.ajax({
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       type: "POST",
+//       url: "api/examples",
+//       data: JSON.stringify(example)
+//     });
+//   },
+//   getExamples: function() {
+//     return $.ajax({
+//       url: "api/examples",
+//       type: "GET"
+//     });
+//   },
+//   deleteExample: function(id) {
+//     return $.ajax({
+//       url: "api/examples/" + id,
+//       type: "DELETE"
+//     });
+//   }
+// };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+// // refreshExamples gets new examples from the db and repopulates the list
+// var refreshExamples = function() {
+//   API.getExamples().then(function(data) {
+//     var $examples = data.map(function(example) {
+//       var $a = $("<a>")
+//         .text(example.text)
+//         .attr("href", "/example/" + example.id);
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+//       var $li = $("<li>")
+//         .attr({
+//           class: "list-group-item",
+//           "data-id": example.id
+//         })
+//         .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+//       var $button = $("<button>")
+//         .addClass("btn btn-danger float-right delete")
+//         .text("ｘ");
 
-      $li.append($button);
+//       $li.append($button);
 
-      return $li;
-    });
+//       return $li;
+//     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
+//     $exampleList.empty();
+//     $exampleList.append($examples);
+//   });
+// };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+// // handleFormSubmit is called whenever we submit a new example
+// // Save the new example to the db and refresh the list
+// var handleFormSubmit = function(event) {
+//   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+//   var example = {
+//     text: $exampleText.val().trim(),
+//     description: $exampleDescription.val().trim()
+//   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+//   if (!(example.text && example.description)) {
+//     alert("You must enter an example text and description!");
+//     return;
+//   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
+//   API.saveExample(example).then(function() {
+//     refreshExamples();
+//   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
+//   $exampleText.val("");
+//   $exampleDescription.val("");
+// };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleLessonExpand = function() {
+var handleLessonExpand = function () {
   var id = $(this).attr("data-id");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
@@ -94,7 +94,7 @@ var handleLessonExpand = function() {
   $("#" + id + "-lesson").css("display", "block");
 };
 
-var handleStudentExpand = function() {
+var handleStudentExpand = function () {
   var id = $(this).attr("data-id");
   $(".student").css("background-color", "white");
   $(".lesson").css("background-color", "white");
@@ -107,11 +107,10 @@ var handleStudentExpand = function() {
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
 $(document).on("click", ".lesson", handleLessonExpand);
 $(document).on("click", ".student", handleStudentExpand);
 
-$("#password, #confirm_password").on("keyup", function() {
+$("#password, #confirm_password").on("keyup", function () {
   if ($("#password").val() === $("#confirm_password").val()) {
     $("#message")
       .html("Matching")
@@ -123,16 +122,42 @@ $("#password, #confirm_password").on("keyup", function() {
   }
 });
 
-$(document).ready(function() {
-  $("#tosignup").on("click", function() {
+$(document).ready(function () {
+  $("#tosignup").on("click", function () {
     var signIn = $(this).attr("click-id");
-    $("#signInModal").hide();
+    // $("#signInModal").hide();
     $(signIn).fadeIn(500);
   });
 
-  $("#tologin").on("click", function() {
+  $("#tologin").on("click", function () {
     var logIn = $(this).attr("click-id");
     $("#signUpModal").hide();
     $(logIn).fadeIn(500);
   });
+
+  // toggles the display for student modal
+  $(document).on("click", "#student-modal", function (event) {
+    event.preventDefault();
+    // show the modal
+    $("#addUserModal").css("display", "flex");
+  });
+
+  $(document).on("click", ".modal", function (event) {
+    console.log(event);
+    // $(".modal").hide();
+  });
+
+  // event handler to add a student
+  $(document).on("click", "#add-student", function (event) {
+    // show the modal
+    event.preventDefault();
+    console.log(event);
+    $("#addUserModal").hide();
+  });
+
+
+  // Cancel model
+  $(document).on("click", "#cancel-modal", function () {
+    $("#addUserModal").hide();
+  })
 });
