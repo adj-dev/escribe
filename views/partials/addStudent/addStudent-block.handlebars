@@ -1,29 +1,26 @@
-<div id="addUserModal" style='display:none; position:fixed; top:50px; left:50px; z-index:2; background-color:white'>
-    <div class="w3-card-4" style="width:50%;margin-top:3px;" id="newtutordiv">
-        <header class="w3-container w3-amber">
-            <h3>Add a Student</h3>
+
+<div id="addUserModal" class="w3-modal w3-animate-zoom">
+    <div class="w3-modal-content w3-card-4" style="width:50%">
+        <header class="w3-container w3-blue">
+            <span onclick="document.getElementById('addUserModal').style.display='none'"
+                class="w3-button w3-large w3-display-topright">&times;</span>
+            <h2>Add New Student</h2>
         </header>
         <div class="w3-container">
             <form>
                 <div id="formflow">
-                    <input placeholder="Student's first name" name="tchrfirstname" class="inputA" required />
-                    <input placeholder="Student's last name" name="tchrlastname" class="inputA" required />
-                    <input placeholder="Student's email address" type="email" name="tchremail" class="inputA"
-                        required />
-                    <input placeholder="Student's phone number" name="tchrphone" class="inputA" required />
-                    <input placeholder="Make password >= 8 digits" type="password" id="password" class="inputA"
-                        required />
-                    <input placeholder="Retype password" type="password" name="confirm_password" id="confirm_password"
-                        class="inputA" required />
-                    <span id='message'></span>
+                    <input placeholder="Student first name" name="studentfirstname" class="inputA" />
+                    <input placeholder="Student last name" name="studentlastname" class="inputA" />
+                    <input placeholder="Student email address" type="email" name="studentemail"
+                        class="inputA" />
+                    <input placeholder="Student phone number" name="studentphone" class="inputA" />
+                    <textarea placeholder="Notes: nickname? billing contact? etc..." name="studentinfo"
+                        class="inputA"></textarea>
+                    <input class="w3-hover-blue" type="submit" style="margin-top:40px;margin-right:6px;" />
                 </div>
             </form>
         </div>
-        <footer class="w3-container w3-amber" class="modalfooter">
-            <h6 class='splash' style="float:right;" click-id="#signInModal" id="tologin"><em>Submit</em></h6>
-            <h6 class='splash' style="float:right;"
-                onclick="document.getElementById('addUserModal').style.display='none'" click-id="#signInModal"
-                id="tologin"><em>Cancel</em></h6>
+        <footer class="w3-container">footer??
         </footer>
     </div>
 </div>
