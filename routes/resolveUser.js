@@ -10,7 +10,7 @@ const resolveUser = (req, res, next) => {
       where: { UserId: user.id }
     };
     db.Instructor.findOne(condition).then(function(instructor) {
-      console.log(instructor.dataValues);
+      //console.log(instructor.dataValues);
       req.user = { isInstructor: true, user: instructor.dataValues };
       next();
     });

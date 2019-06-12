@@ -41,6 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Handlebars
+app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 

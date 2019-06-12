@@ -25,7 +25,7 @@ const strategy = new Strategy(
 );
 
 function validateUser(user, email, password, done) {
-  console.log(user);
+  //console.log(user);
 
   console.log(
     "Back from the database! Let's check if our credentials are good: "

@@ -1,35 +1,41 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h3>Instructor: {{firstName}} {{lastName}}</h3>
-        {{#if Students}}
-        <ul id="example-list" class="list-group">
-          <li data-id="{{id}}" class="list-group-item">
-            <h3>Roster:</h3>
-            {{#each Students}}
-          <li data-id="{{this.id}}" class="list-group-item student">
-            <h3>{{this.firstName}} {{this.lastName}}</h3>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-          </li>
-        </ul>
-        {{/if}}
-        {{#unless Students}}
-        No students to display. Add some to use the app!
-        {{/unless}}
+<div id="app-container">
+  <div id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 offset-2">
+          <h3>Instructor: {{firstName}} {{lastName}}</h3>
+          {{#if Students}}
+          <ul id="example-list" class="list-group">
+            <li data-id="{{id}}" class="list-group-item">
+              <h3>Roster:</h3>
+              <button data-id="{{id}}" class="btn btn-danger float-right add-student"
+                onclick="document.getElementById('addUserModal').style.display='block'">Add Student</button>
+              {{#each Students}}
+            <li data-id="{{this.id}}" class="list-group-item student">
+              <h3>{{this.firstName}} {{this.lastName}}</h3>
+              <button class="btn btn-danger float-right delete">ｘ</button>
+            </li>
+            {{/each}}
+            </li>
+          </ul>
+          {{/if}}
+          {{#unless Students}}
+          No students to display. Add some to use the app!
+          {{/unless}}
+        </div>
       </div>
     </div>
+    <div>
+      {{#if Students}}
+      {{#each Students}}
+      {{>students/student-block id=id firstName=firstName lastName=lastName notes=notes display="none"}}
+      {{/each}}
+      {{/if}}
+    </div>
   </div>
-  <div>
-    {{#if Students}}
-    {{#each Students}}
-    {{>students/student-block id=id firstName=firstName lastName=lastName notes=notes display="none"}}
-    {{/each}}
-    {{/if}}
+  <div id="lessons-container">
+    {{>addStudent/addStudent-block}}
   </div>
 </div>
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
