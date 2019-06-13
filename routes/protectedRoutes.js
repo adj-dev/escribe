@@ -226,7 +226,7 @@ router.delete("/api/instructor/:id", function (req, res) {
   });
 });
 
-// Delete an example by id
+// Delete a student by id
 router.delete("/api/student/:id", function (req, res) {
   if (!hasStudent(req)) {
     return res.status(403).json("That is not your data!");

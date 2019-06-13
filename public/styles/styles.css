@@ -78,6 +78,16 @@ body {
   margin: 20px auto;
   padding: 20px 40px 40px;
 }
+
+#introdiv > p {
+  line-height: 1.5em;
+  width: 100%;
+}
+
+#introdiv > h3 {
+  color: #3567d3;
+}
+
 #introdiv > p > span {
   font-family: "Pacifico", cursive;
   font-size: 1.2em;
