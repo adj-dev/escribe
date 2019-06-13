@@ -11,11 +11,32 @@
   border: none;
 }
 
+ul.list-group {
+  padding: 0;
+}
+
+button#lesson-modal {
+  border: none;
+  background-color: unset;
+  color: #f0f0f0;
+  font-size: 1.7em;
+}
+
+button#lesson-modal:hover {
+  color: #29ee85;
+}
+
+button#lesson-modal:focus {
+  color: #29ee85;
+  outline: none;
+}
+
+
 #student-list-container {
   overflow: scroll;
   border-right: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
-  border-left: none;
+  border-left: 1px solid lightgray;
 }
 
 body {
@@ -33,26 +54,32 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-start;
-  /* border: 1px solid black; */
+  justify-content: space-evenly;
+  padding-top: 30px;
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
+  max-height: 800px;
 }
+
+#home,
+#students-container {
+  border-radius: 12px;
+  max-height: 700px;
+}
+
 #home {
-  width: 33vw;
+  width: 30vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid purple; */
   overflow: scroll;
 }
 
 #students-container {
-  width: 66vw;
+  width: 60vw;
   height: 100vh;
   display: flex;
-  /* border: 1px solid yellow; */
-  border-right: 1px solid lightgray;
+  /* border-right: 1px solid lightgray; */
 }
 
 .student-body {
@@ -60,7 +87,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  /* border: 1px solid purple; */
+  border-radius: 12px 0;
   overflow: scroll;
 }
 
@@ -68,9 +95,8 @@ body {
   width: 50%;
   height: 100vh;
   display: flex;
-  /* border: 1px solid purple; */
+  border-radius: 0 12px;
   overflow: scroll;
-  border-left: 1px solid lightgray;
 }
 
 #lesson-notes {
@@ -84,14 +110,20 @@ body {
   padding: 10px;
   padding-left: 20px;
   justify-content: space-between;
-  background-color: #bcd1ff;
+  background-color: #3567d3;
+  color: #f0f0f0;
 }
 
-#topic-header {
+.section-header > h3 {
+  font-size: 1.6em;
+  font-weight: 300;
+}
+
+/* #topic-header {
   font-size: 1.5em;
   font-weight: 400;
   line-height: 2rem;
-}
+} */
 .date {
   color: grey;
   font-size: 0.75em;
@@ -205,20 +237,21 @@ button.student-modal {
   border: none;
   background-color: unset;
   font-size: 2em;
-  color: #383838;
+  color: #f0f0f0;
 }
 
 button.student-modal:hover {
-  color: #3567d3;
+  color: #29ee85;
 }
 
 button.student-modal:focus {
   outline: none;
-  color: #3567d3;
+  color: #29ee85;
 }
 
 button.student-modal.small {
   font-size: 1.2em;
+  color: #7e7e7e;
 }
 
 button.student-modal.small:hover,
@@ -226,14 +259,16 @@ button.student-modal.small:focus {
   color: #ff9252;
 }
 
-textarea#new-notes {
+textarea#new-notes,
+textarea#content {
   border: 1px solid #3567d3;
   border-radius: 12px;
   font-size: 1.3em;
   padding: 3px 10px;
 }
 
-textarea#new-notes:focus {
+textarea#new-notes:focus,
+textarea#content:focus {
   border: 2px solid #3567d3;
   border-radius: 12px;
   outline: none;
@@ -262,13 +297,15 @@ textarea#new-notes:focus {
   background-color: #f0f0f0;
 }
 
-.form-modal > .modal-student-input > button.form-button:hover {
+.form-modal > .modal-student-input > button.form-button:hover,
+button#add-lesson:hover {
   cursor: pointer;
   background-color: #3567d3;
   color: #f0f0f0;
 }
 
-.form-modal > .modal-student-input > button.form-button:focus {
+.form-modal > .modal-student-input > button.form-button:focus,
+button#add-lesson:focus {
   background-color: #3567d3;
   color: #f0f0f0;
   outline: none;

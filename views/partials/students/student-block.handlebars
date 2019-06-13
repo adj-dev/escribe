@@ -1,9 +1,8 @@
 <div class="student-body" id="{{this.id}}-student" style="display:{{this.display}}">
     <div class="section-header">
-        <h3>{{this.firstName}} {{this.lastName}}'s Lessons</h3>
+        <h3>{{this.firstName}}'s Lessons</h3>
         <button id="lesson-modal" data-id="{{id}}" class="btn btn-primary float-right add-lesson"
-            style="display:{{this.displayActions}}">Add
-            Lesson</button>
+            style="display:{{this.displayActions}}"><i class="far fa-edit"></i></button>
     </div>
     <ul id="student-{{this.id}}" class="list-group">
         {{#if Lessons}}
@@ -16,7 +15,6 @@
                     <a href="../api/lesson/{{this.id}}">{{this.topic}}</a>
                 </h3>
                 <p class="date">{{this.createdAt}}</p>
-                <button class="float-right">+</button>
             </span>
         </li>
         {{/each}}
