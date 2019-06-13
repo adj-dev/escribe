@@ -49,7 +49,7 @@ body {
   height: 100vh;
 }
 
-button#lesson-modal {
+/* button#lesson-modal {
   border: none;
   background-color: unset;
   color: #383838;
@@ -63,7 +63,7 @@ button#lesson-modal {
  button#lesson-modal:focus {
   color: #3567d3;
   outline: none;
- }
+ } */
 
 #introdiv {
   display: flex;
@@ -97,19 +97,18 @@ button#lesson-modal {
   padding-top: 30px;
   width: 100vw;
   /* height: 100vh; */
-  height: 91vh;
+  height: 80vh;
   max-height: 800px;
 }
 
-#home,
-#students-container {
+#home {
   border-radius: 12px;
-  max-height: 700px;
+  box-shadow: 0 0 7px #00000067;
 }
 
 #home {
   width: 30vw;
-  height: 91vh;
+  height: inherit;
   display: flex;
   flex-direction: column;
   overflow: scroll;
@@ -117,7 +116,8 @@ button#lesson-modal {
 
 #students-container {
   width: 60vw;
-  height: 91vh;
+  overflow: scroll;
+  height: inherit;
   display: flex;
   /* border-right: 1px solid lightgray; */
 }
@@ -134,8 +134,11 @@ button#lesson-modal {
   width: 50%;
   height: 92vh;
   display: flex;
-  border-radius: 0 12px;
   /* overflow: scroll; */
+}
+
+.lesson-body > div {
+  border-radius: 0 12px 0 0;
 }
 
 #lesson-notes {
@@ -153,6 +156,7 @@ button#lesson-modal {
   justify-content: space-between;
   background-color: #3567d3;
   color: #f0f0f0;
+  border-radius: 12px 0 0;
 }
 
 .section-header > h3 {
