@@ -20,7 +20,7 @@
       {{#each Students}}
       <div data-id="{{this.id}}" class="list-group-item student">
         <h3>{{this.firstName}} {{this.lastName}}</h3>
-        <button class="student-modal small"><i class="fas fa-times"></i></button>
+        <button id="delete-student" class="student-modal small"><i class="fas fa-times"></i></button>
       </div>
       {{/each}}
       {{/if}}
