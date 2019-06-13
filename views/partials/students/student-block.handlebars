@@ -5,8 +5,9 @@
             style="display:{{this.displayActions}}">Add
             Lesson</button>
     </div>
-    {{#if Lessons}}
     <ul id="student-{{this.id}}" class="list-group">
+        {{#if Lessons}}
+
         {{#each Lessons}}
 
         <li data-id="{{this.id}}" class="list-group-item lesson">
@@ -19,8 +20,8 @@
             </span>
         </li>
         {{/each}}
+        {{/if}}
     </ul>
-    {{/if}}
     {{#unless Lessons}}
     No lessons to display. Add some to use the app!
     {{/unless}}
