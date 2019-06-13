@@ -111,51 +111,51 @@ $(function() {
   });
 
   // event handler to add a student
-  $(document).on("click", "#update-student", function() {
-    // console.log(event);
-    let firstName = $("#update-first-name")
-      .val()
-      .trim();
-    let lastName = $("#update-last-name")
-      .val()
-      .trim();
-    let password = $("#update-new-password")
-      .val()
-      .trim();
-    // Will need to validate eventually
-    let email = $("#update-email")
-      .val()
-      .trim();
-    let phone = $("#update-phone")
-      .val()
-      .trim();
-    let notes = $("#update-notes")
-      .val()
-      .trim();
+  // $(document).on("click", "#update-student", function() {
+  //   // console.log(event);
+  //   let firstName = $("#update-first-name")
+  //     .val()
+  //     .trim();
+  //   let lastName = $("#update-last-name")
+  //     .val()
+  //     .trim();
+  //   let password = $("#update-new-password")
+  //     .val()
+  //     .trim();
+  //   // Will need to validate eventually
+  //   let email = $("#update-email")
+  //     .val()
+  //     .trim();
+  //   let phone = $("#update-phone")
+  //     .val()
+  //     .trim();
+  //   let notes = $("#update-notes")
+  //     .val()
+  //     .trim();
 
-    let body = {
-      firstName,
-      lastName,
-      password,
-      email,
-      phone,
-      notes
-    };
-    let url = "/api/student";
+  //   let body = {
+  //     firstName,
+  //     lastName,
+  //     password,
+  //     email,
+  //     phone,
+  //     notes
+  //   };
+  //   let url = "/api/student";
 
-    $.ajax({
-      method: "PUT",
-      url,
-      data: body
-    }).then(res => {
-      if (res) {
-        document.location.reload(true);
-      }
-    });
+  //   $.ajax({
+  //     method: "PUT",
+  //     url,
+  //     data: body
+  //   }).then(res => {
+  //     if (res) {
+  //       document.location.reload(true);
+  //     }
+  //   });
 
-    // hide modal
-    $("#updateStudentModal").hide();
-  });
+  //   // hide modal
+  //   $("#updateStudentModal").hide();
+  // });
 
   // event handler to add a lesson
   $(document).on("click", "#add-lesson", function(event) {
@@ -186,17 +186,18 @@ $(function() {
     }).then(result => {
       console.log(result);
       if (result) {
-        let { id, topic, body, createdAt, StudentId } = result;
+        let { id, topic, body, createdAt, StudentId } = result; //eslint-disable-line
         // append the newly created lesson to the page
         let div = $("<div>");
         div.attr("data-id", id);
         div.addClass("list-group-item lesson");
         let span = $("<span>");
         let h3 = $("<h3>");
-        let a = $("<a>");
-        a.attr("href", `../api/lesson/${id}`); // eslint-disable-line
-        a.text(topic);
-        h3.append(a);
+        // let a = $("<a>");
+        // a.attr("href", `../api/lesson/${id}`); // eslint-disable-line
+        // a.text(topic);
+        // h3.append(a);
+        h3.text(topic);
         let p = $("<p>");
         p.addClass("date");
         p.text(createdAt);
@@ -265,13 +266,12 @@ $(function() {
   });
 
   // delete a student
-  $(document).on("click", "#delete-student", function () {
-    let id = $(this).parent().attr("data-id");
-    console.log(id);
+  $(document).on("click", "#delete-student", function() {
+    let id = $(this)
+      .parent()
+      .attr("data-id");
 
-    let url = `/api/student/${id}` // eslint-disable-line
-
-
+    let url = `/api/student/${id}`; // eslint-disable-line
 
     $.ajax({
       method: "DELETE",
@@ -280,6 +280,32 @@ $(function() {
       .then(response => {
         if (response) {
           document.location.reload(true);
+        }
+      })
+      .catch(err => {
+        if (err) {
+          console.log(err);
+        }
+      });
+  });
+
+  $(document).on("click", "#delete-lesson", function() {
+    let id = $(this)
+      .parent()
+      .attr("data-id");
+
+    let url = `/api/lesson/${id}`; // eslint-disable-line
+
+    $.ajax({
+      method: "DELETE",
+      url: url
+    })
+      .then(response => {
+        if (response) {
+          $(this)
+            .parent()
+            .remove();
+          $(`#${id}-lesson`).css("display", "none");
         }
       })
       .catch(err => {

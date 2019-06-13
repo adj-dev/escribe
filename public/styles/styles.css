@@ -95,8 +95,8 @@ body {
   justify-content: space-evenly;
   padding: 30px;
   width: 100vw;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
   /* height: 100vh; */
   height: 80vh;
   max-height: 800px;
@@ -165,7 +165,7 @@ body {
 
 .section-header > h3 {
   font-size: 1.6em;
-  font-weight: 300;
+  font-weight: bold;
 }
 
 /* #topic-header {
