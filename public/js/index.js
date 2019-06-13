@@ -111,19 +111,40 @@ $(function () {
       url,
       data: body
     })
-      .then(req => {
-        if (req) {
-          document.location.reload(true);
+      .then(result => {
+        if (result.id) {
+          let { id, topic, createdAt } = req;
+          // append the newly created lesson to the page
+          let li = $("<li>");
+          li.attr("data-id", id);
+          li.addClass("list-group-item lesson");
+          let span = $("<span>");
+          let h3 = $("<h3>");
+          let a = $("<a>");
+          a.attr("href", `../api/lesson/${id}`) // eslint-disable-line
+          a.text(topic);
+          h3.append(a);
+          let button = $("<button>");
+          button.addClass("float-right");
+          button.text("+");
+          let p = $("<p>");
+          p.addClass("date");
+          p.text(createdAt);
+          span.append(h3).append(p).append(button);
+          li.append(span);
+
+          // append to div
+          $("#example-list").append(li);
         }
+        // hide the modal
+        $("#addLessonModal").hide();
       });
-    // hide the modal
-    $("#addLessonModal").hide();
-  });
 
 
-  // Cancel model
-  $(document).on("click", "#cancel-modal", function () {
-    $("#addStudentModal").hide();
-    $("#addLessonModal").hide();
+    // Cancel model
+    $(document).on("click", "#cancel-modal", function () {
+      $("#addStudentModal").hide();
+      $("#addLessonModal").hide();
+    });
   });
 });
