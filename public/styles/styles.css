@@ -13,7 +13,8 @@
 
 #student-list-container {
   overflow: scroll;
-  border: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   border-left: none;
 }
 
@@ -83,7 +84,9 @@ body {
   padding: 10px;
   padding-left: 20px;
   justify-content: space-between;
+  background-color: #bcd1ff;
 }
+
 #topic-header {
   font-size: 1.5em;
   font-weight: 400;
@@ -196,6 +199,31 @@ body {
 .column-left,
 .column-right {
   width: 45%;
+}
+
+button.student-modal {
+  border: none;
+  background-color: unset;
+  font-size: 2em;
+  color: #383838;
+}
+
+button.student-modal:hover {
+  color: #3567d3;
+}
+
+button.student-modal:focus {
+  outline: none;
+  color: #3567d3;
+}
+
+button.student-modal.small {
+  font-size: 1.2em;
+}
+
+button.student-modal.small:hover,
+button.student-modal.small:focus {
+  color: #ff9252;
 }
 
 textarea#new-notes {
