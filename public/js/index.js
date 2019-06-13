@@ -184,7 +184,7 @@ $(function () {
   });
 
   // delete a student
-  $(document).on("click", "#delete-student", function (event) {
+  $(document).on("click", "#delete-student", function () {
     let id = $(this).parent().attr("data-id");
     console.log(id);
 
