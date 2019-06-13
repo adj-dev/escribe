@@ -182,4 +182,29 @@ $(function () {
         }
       });
   });
+
+  // delete a student
+  $(document).on("click", "#delete-student", function () {
+    let id = $(this).parent().attr("data-id");
+    console.log(id);
+
+    let url = `/api/student/${id}` // eslint-disable-line
+
+
+
+    $.ajax({
+      method: "DELETE",
+      url: url
+    })
+      .then(response => {
+        if (response) {
+          document.location.reload(true);
+        }
+      })
+      .catch(err => {
+        if (err) {
+          console.log(err);
+        }
+      });
+  });
 });
