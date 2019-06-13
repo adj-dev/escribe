@@ -43,7 +43,7 @@ $(function () {
   $(document).on("click", "#student-modal", function (event) {
     event.preventDefault();
     // show the modal
-    console.log(event);
+    // console.log(event);
     $("#addStudentModal").css("display", "flex");
   });
 
@@ -96,7 +96,7 @@ $(function () {
     event.preventDefault();
     let topic = $("#topic").val().trim();
     let content = $("#content").val().trim();
-    console.log($(this));
+    // console.log($(this));
 
     // let id = $(this).attr("data-id");
 
@@ -143,13 +143,30 @@ $(function () {
         // hide the modal
         $("#addLessonModal").hide();
       });
-
-
-    // Cancel model
   });
 
+  // Cancel model
   $(document).on("click", "#cancel-modal", function () {
     $("#addStudentModal").hide();
     $("#addLessonModal").hide();
+  });
+
+
+  // Logout
+  $(document).on("click", "#logout", function () {
+    $.ajax({
+      method: "POST",
+      url: "/logout"
+    })
+      .then(response => {
+        if (response) {
+          document.location.reload(true);
+        }
+      })
+      .catch(err => {
+        if (err) {
+          console.log(err);
+        }
+      });
   });
 });

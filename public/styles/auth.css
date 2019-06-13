@@ -28,7 +28,7 @@ nav {
 
 .brand > h1 {
   font-family: 'Pacifico', cursive;
-  padding: 0 20px;
+  padding: 0 10px 0 20px;
   color: #f0f0f0;
 }
 
@@ -49,6 +49,18 @@ nav {
   text-decoration: none;
   font-size: 1.5em;
   padding: 0 15px;
+}
+
+.links > span {
+  font-family: 'Quicksand', sans-serif;
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 1.5em;
+  padding: 0 15px;
+}
+
+.links > span:hover {
+  cursor: pointer;
 }
 
 /* Tagline */
