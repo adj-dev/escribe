@@ -106,6 +106,7 @@ router.post("/api/lesson", function (req, res) {
   });
 });
 
+// FOR TESTING PURPOSES
 router.post("/new_instructor", function (req, res) {
   db.User.create({
     email: "foo@bar.net",
