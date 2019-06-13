@@ -4,7 +4,6 @@ var handleLessonExpand = function () {
   var id = $(this).attr("data-id");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
-  console.log(id);
 
   $(".lesson-body").css("display", "none");
   $("#" + id + "-lesson").css("display", "block");
@@ -15,7 +14,6 @@ var handleStudentExpand = function () {
   $(".student").css("background-color", "white");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
-  console.log(id);
 
   $(".student-body").css("display", "none");
   $(".lesson-body").css("display", "none");
@@ -94,7 +92,30 @@ $(function () {
   // event handler to add a lesson
   $(document).on("click", "#add-lesson", function (event) {
     event.preventDefault();
-    console.log(event);
+    let topic = $("#topic").val().trim();
+    let content = $("#content").val().trim();
+
+    let id = $("#lesson-modal").attr("data-id");
+
+    let body = {
+      topic,
+      body: content,
+      StudentId: id
+    };
+
+    let url = "/api/lesson";
+
+    // make the ajax request
+    $.ajax({
+      method: "POST",
+      url,
+      data: body
+    })
+      .then(req => {
+        if (req) {
+          document.location.reload(true);
+        }
+      });
     // hide the modal
     $("#addLessonModal").hide();
   });
