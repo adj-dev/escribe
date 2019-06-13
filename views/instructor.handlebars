@@ -4,17 +4,19 @@
       <h3>{{firstName}} {{lastName}}'s Roster</h3>
       <button data-id="{{id}}" id="student-modal">Add Student</button>
     </div>
-    {{#if Students}}
-    {{#each Students}}
-    <li data-id="{{this.id}}" class="list-group-item student">
-      <h3>{{this.firstName}} {{this.lastName}}</h3>
-      <button class="btn btn-primary float-right delete">ｘ</button>
-    </li>
-    {{/each}}
-    {{/if}}
-    {{#unless Students}}
-    No students to display. Add some to use the app!
-    {{/unless}}
+    <div id="student-list-container">
+      {{#if Students}}
+      {{#each Students}}
+      <div data-id="{{this.id}}" class="list-group-item student">
+        <h3>{{this.firstName}} {{this.lastName}}</h3>
+        <button class="btn btn-primary float-right delete">ｘ</button>
+      </div>
+      {{/each}}
+      {{/if}}
+      {{#unless Students}}
+      No students to display. Add some to use the app!
+      {{/unless}}
+    </div>
   </div>
   <div id="students-container">
     {{#if Students}}
