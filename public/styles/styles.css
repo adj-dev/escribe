@@ -1,5 +1,20 @@
 .list-group-item {
-  line-height: 2.5;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid lightgrey;
+}
+.list-group-item:first-child {
+  border: none;
+}
+
+#student-list-container {
+  overflow: scroll;
+  border: 1px solid lightgray;
+  border-left: none;
 }
 
 body {
@@ -36,6 +51,7 @@ body {
   height: 100vh;
   display: flex;
   /* border: 1px solid yellow; */
+  border-right: 1px solid lightgray;
 }
 
 .student-body {
@@ -53,6 +69,7 @@ body {
   display: flex;
   /* border: 1px solid purple; */
   overflow: scroll;
+  border-left: 1px solid lightgray;
 }
 
 #lesson-notes {
@@ -228,4 +245,3 @@ textarea#new-notes:focus {
   color: #f0f0f0;
   outline: none;
 }
-
