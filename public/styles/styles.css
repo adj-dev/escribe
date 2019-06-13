@@ -28,6 +28,22 @@ body {
   height: 100vh;
 }
 
+button#lesson-modal {
+  border: none;
+  background-color: unset;
+  color: #383838;
+  font-size: 1.7em;
+ }
+ 
+ button#lesson-modal:hover {
+  color: #3567d3;
+ }
+ 
+ button#lesson-modal:focus {
+  color: #3567d3;
+  outline: none;
+ }
+
 #introdiv {
   display: flex;
   flex-direction: column;
@@ -249,14 +265,16 @@ button.student-modal.small:focus {
   color: #ff9252;
 }
 
-textarea#new-notes {
+textarea#new-notes,
+textarea#content {
   border: 1px solid #3567d3;
   border-radius: 12px;
   font-size: 1.3em;
   padding: 3px 10px;
 }
 
-textarea#new-notes:focus {
+textarea#new-notes:focus,
+textarea#content:focus {
   border: 2px solid #3567d3;
   border-radius: 12px;
   outline: none;
@@ -281,17 +299,20 @@ textarea#new-notes:focus {
   text-decoration: underline;
 }
 
-.form-modal > .modal-student-input > button.form-button {
+.form-modal > .modal-student-input > button.form-button,
+button#add-lesson {
   background-color: #f0f0f0;
 }
 
-.form-modal > .modal-student-input > button.form-button:hover {
+.form-modal > .modal-student-input > button.form-button:hover,
+button#add-lesson:hover {
   cursor: pointer;
   background-color: #3567d3;
   color: #f0f0f0;
 }
 
-.form-modal > .modal-student-input > button.form-button:focus {
+.form-modal > .modal-student-input > button.form-button:focus,
+button#add-lesson:focus {
   background-color: #3567d3;
   color: #f0f0f0;
   outline: none;
