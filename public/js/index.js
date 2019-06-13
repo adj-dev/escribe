@@ -1,10 +1,10 @@
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
+let selectedStudentId;
 var handleLessonExpand = function () {
   var id = $(this).attr("data-id");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
-  console.log(id);
 
   $(".lesson-body").css("display", "none");
   $("#" + id + "-lesson").css("display", "block");
@@ -12,10 +12,10 @@ var handleLessonExpand = function () {
 
 var handleStudentExpand = function () {
   var id = $(this).attr("data-id");
+  selectedStudentId = id;
   $(".student").css("background-color", "white");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
-  console.log(id);
 
   $(".student-body").css("display", "none");
   $(".lesson-body").css("display", "none");
@@ -80,8 +80,10 @@ $(function () {
       url,
       data: body
     })
-      .then(() => {
-        href.location = "/";
+      .then(res => {
+        if (res) {
+          document.location.reload(true);
+        }
       });
 
     // hide modal
@@ -92,13 +94,60 @@ $(function () {
   // event handler to add a lesson
   $(document).on("click", "#add-lesson", function (event) {
     event.preventDefault();
-    console.log(event);
-    // hide the modal
-    $("#addLessonModal").hide();
+    let topic = $("#topic").val().trim();
+    let content = $("#content").val().trim();
+    console.log($(this));
+
+    // let id = $(this).attr("data-id");
+
+    let body = {
+      topic,
+      body: content,
+      StudentId: selectedStudentId
+    };
+
+    let url = "/api/lesson";
+
+    // make the ajax request
+    $.ajax({
+      method: "POST",
+      url,
+      data: body
+    })
+      .then(result => {
+        console.log(result);
+        if (result) {
+          let { id, topic, createdAt, StudentId } = result;
+          // append the newly created lesson to the page
+          let li = $("<li>");
+          li.attr("data-id", id);
+          li.addClass("list-group-item lesson");
+          let span = $("<span>");
+          let h3 = $("<h3>");
+          let a = $("<a>");
+          a.attr("href", `../api/lesson/${id}`) // eslint-disable-line
+          a.text(topic);
+          h3.append(a);
+          let button = $("<button>");
+          button.addClass("float-right");
+          button.text("+");
+          let p = $("<p>");
+          p.addClass("date");
+          p.text(createdAt);
+          span.append(h3).append(p).append(button);
+          li.append(span);
+
+          // append to div
+          $(`#student-${StudentId}`).append(li); // eslint-disable-line
+        }
+        // hide the modal
+        $("#addLessonModal").hide();
+      });
+
+
+    // Cancel model
   });
 
-
-  // Cancel model
   $(document).on("click", "#cancel-modal", function () {
     $("#addStudentModal").hide();
     $("#addLessonModal").hide();
