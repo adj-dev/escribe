@@ -11,10 +11,11 @@
         <div data-id="{{this.id}}" class="list-group-item lesson">
             <span>
                 <h3>
-                    <a href="../api/lesson/{{this.id}}">{{this.topic}}</a>
+                    {{this.topic}}
                 </h3>
                 <p class="date">{{this.createdAt}}</p>
             </span>
+            <button id="delete-lesson" class="student-modal small"><i class="fas fa-times"></i></button>
         </div>
         {{/each}}
         {{/if}}
@@ -25,11 +26,8 @@
 </div>
 
 
-
 {{#if Lessons}}
-
 {{#each Lessons}}
 {{>lessons/lesson-block}}
 {{/each}}
-
 {{/if}}
