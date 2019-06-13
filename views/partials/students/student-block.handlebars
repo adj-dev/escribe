@@ -4,22 +4,21 @@
         <button id="lesson-modal" data-id="{{id}}" class="btn btn-primary float-right add-lesson"
             style="display:{{this.displayActions}}"><i class="far fa-edit"></i></button>
     </div>
-    <ul id="student-{{this.id}}" class="list-group">
+    <div class="lesson-list-container" id="student-{{this.id}}">
         {{#if Lessons}}
-
         {{#each Lessons}}
 
-        <li data-id="{{this.id}}" class="list-group-item lesson">
+        <div data-id="{{this.id}}" class="list-group-item lesson">
             <span>
                 <h3>
                     <a href="../api/lesson/{{this.id}}">{{this.topic}}</a>
                 </h3>
                 <p class="date">{{this.createdAt}}</p>
             </span>
-        </li>
+        </div>
         {{/each}}
         {{/if}}
-    </ul>
+    </div>
     {{#unless Lessons}}
     <span id="no-lessons">No lessons to display. Add some to use the app!</span>
     {{/unless}}

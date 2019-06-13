@@ -37,19 +37,58 @@ button#lesson-modal:focus {
   border-right: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
   border-left: 1px solid lightgray;
+  height: 100vh;
+}
+
+.lesson-list-container {
+  height: 83vh;
+  overflow: scroll;
 }
 
 body {
   height: 100vh;
 }
 
+button#lesson-modal {
+  border: none;
+  background-color: unset;
+  color: #383838;
+  font-size: 1.7em;
+ }
+ 
+ button#lesson-modal:hover {
+  color: #3567d3;
+ }
+ 
+ button#lesson-modal:focus {
+  color: #3567d3;
+  outline: none;
+ }
+
 #introdiv {
-  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2rem;
+  width: 55%;
   font-size: 1.4em;
-  border: 6px solid rgb(240, 240, 240);
+  border: 1px solid rgb(240, 240, 240);
+  box-shadow: 0 0 7px #00000067;
+  border-radius: 20px;
   margin: 20px auto;
-  padding: 0px 40px;
+  padding: 40px;
 }
+#introdiv > p > span {
+  font-family: "Pacifico", cursive;
+  font-size: 1.2em;
+  color: #3567d3;
+}
+
+#introdiv > strong {
+  font-weight: bolder;
+}
+
 #app-container {
   display: flex;
   flex-direction: row;
@@ -58,6 +97,7 @@ body {
   padding-top: 30px;
   width: 100vw;
   /* height: 100vh; */
+  height: 91vh;
   max-height: 800px;
 }
 
@@ -69,7 +109,7 @@ body {
 
 #home {
   width: 30vw;
-  height: 100vh;
+  height: 91vh;
   display: flex;
   flex-direction: column;
   overflow: scroll;
@@ -77,31 +117,32 @@ body {
 
 #students-container {
   width: 60vw;
-  height: 100vh;
+  height: 91vh;
   display: flex;
   /* border-right: 1px solid lightgray; */
 }
 
 .student-body {
   width: 50%;
-  height: 100vh;
+  height: 91vh;
   display: flex;
   flex-direction: row;
   border-radius: 12px 0;
-  overflow: scroll;
 }
 
 .lesson-body {
   width: 50%;
-  height: 100vh;
+  height: 92vh;
   display: flex;
   border-radius: 0 12px;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 #lesson-notes {
   padding: 20px;
   padding-top: 0px;
+  height: 83vh;
+  overflow: scroll;
 }
 
 .section-header {
@@ -293,7 +334,8 @@ textarea#content:focus {
   text-decoration: underline;
 }
 
-.form-modal > .modal-student-input > button.form-button {
+.form-modal > .modal-student-input > button.form-button,
+button#add-lesson {
   background-color: #f0f0f0;
 }
 
