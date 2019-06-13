@@ -13,6 +13,7 @@ var handleLessonExpand = function() {
 var handleStudentExpand = function() {
   var id = $(this).attr("data-id");
   selectedStudentId = id;
+  $("#students-container").css("visibility", "visible");
   $(".student").css("background-color", "white");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
@@ -45,6 +46,14 @@ $(function() {
     // show the modal
     // console.log(event);
     $("#addStudentModal").css("display", "flex");
+  });
+
+  $(document).on("click", "#update-student-modal", function(event) {
+    event.preventDefault();
+    // show the modal
+    // console.log(event);
+
+    $("#updateStudentModal").css("display", "flex");
   });
 
   // toggles the display for lesson modal

@@ -31,7 +31,6 @@ button#lesson-modal:focus {
   outline: none;
 }
 
-
 #student-list-container {
   overflow: scroll;
   border-right: 1px solid lightgray;
@@ -96,6 +95,8 @@ body {
   justify-content: space-evenly;
   padding-top: 30px;
   width: 100vw;
+  padding-left: 10px;
+  padding-right: 10px;
   /* height: 100vh; */
   height: 80vh;
   max-height: 800px;
@@ -104,9 +105,6 @@ body {
 #home {
   border-radius: 12px;
   box-shadow: 0 0 7px #00000067;
-}
-
-#home {
   width: 30vw;
   height: inherit;
   display: flex;
@@ -116,9 +114,12 @@ body {
 
 #students-container {
   width: 60vw;
+  border-radius: 12px;
   overflow: scroll;
   height: inherit;
   display: flex;
+  box-shadow: 0 0 7px #00000067;
+  visibility: hidden;
   /* border-right: 1px solid lightgray; */
 }
 
@@ -128,12 +129,15 @@ body {
   display: flex;
   flex-direction: row;
   border-radius: 12px 0;
+  box-shadow: 0 0 7px #00000067;
 }
 
 .lesson-body {
   width: 50%;
   height: 92vh;
   display: flex;
+  border-radius: 0 12px;
+  box-shadow: 7px -7px 7px -7px #00000067;
   /* overflow: scroll; */
 }
 
