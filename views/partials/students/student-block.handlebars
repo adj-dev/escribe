@@ -5,12 +5,11 @@
             style="display:{{this.displayActions}}">Add
             Lesson</button>
     </div>
-    <ul id="student-{{this.id}}" class="list-group">
+    <div class="lesson-list-container" id="student-{{this.id}}">
         {{#if Lessons}}
-
         {{#each Lessons}}
 
-        <li data-id="{{this.id}}" class="list-group-item lesson">
+        <div data-id="{{this.id}}" class="list-group-item lesson">
             <span>
                 <h3>
                     <a href="../api/lesson/{{this.id}}">{{this.topic}}</a>
@@ -18,10 +17,10 @@
                 <p class="date">{{this.createdAt}}</p>
                 <button class="float-right">+</button>
             </span>
-        </li>
+        </div>
         {{/each}}
         {{/if}}
-    </ul>
+    </div>
     {{#unless Lessons}}
     No lessons to display. Add some to use the app!
     {{/unless}}
