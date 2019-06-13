@@ -1,7 +1,7 @@
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 let selectedStudentId;
-var handleLessonExpand = function () {
+var handleLessonExpand = function() {
   var id = $(this).attr("data-id");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
@@ -10,7 +10,7 @@ var handleLessonExpand = function () {
   $("#" + id + "-lesson").css("display", "block");
 };
 
-var handleStudentExpand = function () {
+var handleStudentExpand = function() {
   var id = $(this).attr("data-id");
   selectedStudentId = id;
   $(".student").css("background-color", "white");
@@ -26,7 +26,7 @@ var handleStudentExpand = function () {
 $(document).on("click", ".lesson", handleLessonExpand);
 $(document).on("click", ".student", handleStudentExpand);
 
-$("#password, #confirm_password").on("keyup", function () {
+$("#password, #confirm_password").on("keyup", function() {
   if ($("#password").val() === $("#confirm_password").val()) {
     $("#message")
       .html("Matching")
@@ -38,9 +38,9 @@ $("#password, #confirm_password").on("keyup", function () {
   }
 });
 
-$(function () {
+$(function() {
   // toggles the display for student modal
-  $(document).on("click", "#student-modal", function (event) {
+  $(document).on("click", "#student-modal", function(event) {
     event.preventDefault();
     // show the modal
     // console.log(event);
@@ -48,22 +48,34 @@ $(function () {
   });
 
   // toggles the display for lesson modal
-  $(document).on("click", "#lesson-modal", function (event) {
+  $(document).on("click", "#lesson-modal", function(event) {
     event.preventDefault();
     // show the modal
     $("#addLessonModal").css("display", "flex");
   });
 
   // event handler to add a student
-  $(document).on("click", "#add-student", function () {
+  $(document).on("click", "#add-student", function() {
     // console.log(event);
-    let firstName = $("#first-name").val().trim();
-    let lastName = $("#last-name").val().trim();
-    let password = $("#new-password").val().trim();
+    let firstName = $("#first-name")
+      .val()
+      .trim();
+    let lastName = $("#last-name")
+      .val()
+      .trim();
+    let password = $("#new-password")
+      .val()
+      .trim();
     // Will need to validate eventually
-    let email = $("#new-email").val().trim();
-    let phone = $("#new-phone").val().trim();
-    let notes = $("#new-notes").val().trim();
+    let email = $("#new-email")
+      .val()
+      .trim();
+    let phone = $("#new-phone")
+      .val()
+      .trim();
+    let notes = $("#new-notes")
+      .val()
+      .trim();
 
     let body = {
       firstName,
@@ -79,23 +91,25 @@ $(function () {
       method: "POST",
       url,
       data: body
-    })
-      .then(res => {
-        if (res) {
-          document.location.reload(true);
-        }
-      });
+    }).then(res => {
+      if (res) {
+        document.location.reload(true);
+      }
+    });
 
     // hide modal
     $("#addStudentModal").hide();
-
   });
 
   // event handler to add a lesson
-  $(document).on("click", "#add-lesson", function (event) {
+  $(document).on("click", "#add-lesson", function(event) {
     event.preventDefault();
-    let topic = $("#topic").val().trim();
-    let content = $("#content").val().trim();
+    let topic = $("#topic")
+      .val()
+      .trim();
+    let content = $("#content")
+      .val()
+      .trim();
     // console.log($(this));
 
     // let id = $(this).attr("data-id");
@@ -113,49 +127,49 @@ $(function () {
       method: "POST",
       url,
       data: body
-    })
-      .then(result => {
-        if (result) {
-          let { id, topic, createdAt, StudentId } = result;
-          // append the newly created lesson to the page
-          let li = $("<li>");
-          li.attr("data-id", id);
-          li.addClass("list-group-item lesson");
-          let span = $("<span>");
-          let h3 = $("<h3>");
-          let a = $("<a>");
-          a.attr("href", `../api/lesson/${id}`) // eslint-disable-line
-          a.text(topic);
-          h3.append(a);
-          let button = $("<button>");
-          button.addClass("float-right");
-          button.text("+");
-          let p = $("<p>");
-          p.addClass("date");
-          p.text(createdAt);
-          span.append(h3).append(p).append(button);
-          li.append(span);
+    }).then(result => {
+      console.log(result);
+      if (result) {
+        let { id, topic, createdAt, StudentId } = result;
+        // append the newly created lesson to the page
+        let div = $("<div>");
+        div.attr("data-id", id);
+        div.addClass("list-group-item lesson");
+        let span = $("<span>");
+        let h3 = $("<h3>");
+        let a = $("<a>");
+        a.attr("href", `../api/lesson/${id}`); // eslint-disable-line
+        a.text(topic);
+        h3.append(a);
+        let button = $("<button>");
+        button.addClass("float-right");
+        button.text("+");
+        let p = $("<p>");
+        p.addClass("date");
+        p.text(createdAt);
+        span
+          .append(h3)
+          .append(p)
+          .append(button);
+        div.append(span);
 
-          // append to div
-          $(`#student-${StudentId}`).append(li); // eslint-disable-line
+        // append to div
+        $(`#student-${StudentId}`).append(div); // eslint-disable-line
+      }
+      // hide the modal
+      $("#addLessonModal").hide();
+    });
 
-          // need to hide the empty-div message if this is the first lesson
-          $("#no-lessons").hide();
-        }
-        // hide the modal
-        $("#addLessonModal").hide();
-      });
+    // Cancel model
   });
 
-  // Cancel model
-  $(document).on("click", "#cancel-modal", function () {
+  $(document).on("click", "#cancel-modal", function() {
     $("#addStudentModal").hide();
     $("#addLessonModal").hide();
   });
 
-
   // Logout
-  $(document).on("click", "#logout", function () {
+  $(document).on("click", "#logout", function() {
     $.ajax({
       method: "POST",
       url: "/logout"
