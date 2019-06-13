@@ -115,7 +115,6 @@ $(function () {
       data: body
     })
       .then(result => {
-        console.log(result);
         if (result) {
           let { id, topic, createdAt, StudentId } = result;
           // append the newly created lesson to the page
@@ -139,6 +138,9 @@ $(function () {
 
           // append to div
           $(`#student-${StudentId}`).append(li); // eslint-disable-line
+
+          // need to hide the empty-div message if this is the first lesson
+          $("#no-lessons").hide();
         }
         // hide the modal
         $("#addLessonModal").hide();
