@@ -1,18 +1,21 @@
-<div id="addLessonNotes" class="w3-modal w3-animate-zoom">
-    <div class="w3-modal-content w3-card-4" style="width:60%">
-        <header class="w3-container w3-light-blue">
-            <span onclick="document.getElementById('addLessonNotes').style.display='none'"
-                class="w3-button w3-large w3-display-topright">&times;</span>
-            <h2>Add New Lesson</h2>
-        </header>
-        <div class="w3-container">
-                <div id="formflow">
-                    <input placeholder="Lesson title" name="lessontitle" class="inputA" />
-                    <textarea placeholder="Lesson Notes" name="lessonnotes" class="inputA"></textarea>
-                    <input class="w3-hover-light-blue" type="submit" style="margin-top:40px;margin-right:6px;"/>
-                </div>
+<div class="modal" id="addLessonModal">
+    <div class="add-student-container">
+        <div class="header-modal-student">
+            <h1>Add a Lesson</h1>
         </div>
-        <footer class="w3-container">footer???
-        </footer>
+        <div class="form-modal">
+            <div class="form-group">
+                <label for="topic">Topic:</label>
+                <input id="topic" type="text" name="topic" />
+            </div>
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea id="content" type="text" name="content"></textarea>
+            </div>
+        </div>
+        <div class="modal-student-input">
+            <button class="form-button" id="add-lesson">Add Lesson</button>
+            <span id="cancel-modal">Cancel</span>
+        </div>
     </div>
 </div>

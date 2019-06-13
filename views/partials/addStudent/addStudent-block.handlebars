@@ -1,26 +1,47 @@
-
-<div id="addUserModal" class="w3-modal w3-animate-zoom">
-    <div class="w3-modal-content w3-card-4" style="width:50%">
-        <header class="w3-container w3-blue">
-            <span onclick="document.getElementById('addUserModal').style.display='none'"
-                class="w3-button w3-large w3-display-topright">&times;</span>
-            <h2>Add New Student</h2>
-        </header>
-        <div class="w3-container">
-            <form>
-                <div id="formflow">
-                    <input placeholder="Student first name" name="studentfirstname" class="inputA" />
-                    <input placeholder="Student last name" name="studentlastname" class="inputA" />
-                    <input placeholder="Student email address" type="email" name="studentemail"
-                        class="inputA" />
-                    <input placeholder="Student phone number" name="studentphone" class="inputA" />
-                    <textarea placeholder="Notes: nickname? billing contact? etc..." name="studentinfo"
-                        class="inputA"></textarea>
-                    <input class="w3-hover-blue" type="submit" style="margin-top:40px;margin-right:6px;" />
-                </div>
-            </form>
+<div class="modal" id="addStudentModal">
+    <div class="add-student-container">
+        <div class="header-modal-student">
+            <h1>Add A Student</h1>
         </div>
-        <footer class="w3-container">footer??
-        </footer>
+        <div class="form-modal">
+            <div class="modal-row">
+                <div class="column-left">
+                    <div class="form-group">
+                        <label for="first-name">First Name:</label>
+                        <input id="first-name" placeholder="" type="text" name="first-name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name:</label>
+                        <input id="last-name" placeholder="" type="text" name="last-name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input id="new-password" type="password" name="password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cpassword">Confirm Password:</label>
+                        <input id="confirm-password" type="password" name="cpassword" />
+                    </div>
+                </div>
+                <div class="column-right">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input id="new-email" placeholder="me@example.com" type="email" name="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input id="new-phone" placeholder="555-555-5555" type="text" name="phone" />
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notes:</label>
+                        <textarea id="new-notes" name="notes" cols="30" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-student-input">
+                <button class="form-button" id="add-student">Add Student</button>
+                <span id="cancel-modal">Cancel</span>
+            </div>
+        </div>
     </div>
 </div>

@@ -3,7 +3,6 @@
 }
 
 body {
-  /* border: 1px solid red; */
   height: 100vh;
 }
 
@@ -115,13 +114,118 @@ body {
   margin: 10px auto 10px auto;
 }
 
-.modalfooter {
+/* Student modal */
+
+.modal {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: inherit;
+  background-color: #0000006c;
+}
+
+#addStudentModal,
+#addLessonModal {
+  display: none;
+}
+
+.add-student-container {
+  margin: 100px auto 0;
+  height: fit-content;
+  background-color: #fff;
+  padding: 5px 70px;
+  border-radius: 12px;
+  color: #383838;
+  min-width: 700px;
+}
+
+.form-modal input {
+  background-color: #fff;
+}
+
+.form-modal .form-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 6px 0;
+}
+
+.form-modal .form-group > label {
+  font-size: 1em;
+}
+
+.form-modal .form-group > input {
+  border: 1px solid #3567d3;
+  color: #383838;
+}
+
+.form-modal .form-group > input:focus {
+  border: 2px solid #3567d3;
+}
+
+.header-modal-student {
+  max-width: 340px;
+  margin: 0 auto;
+  text-align: center;
+  color: #3567d3;
+}
+
+.modal-row {
+  display: flex;
   justify-content: space-between;
 }
 
-.minirooster {
-  margin: 12px 0;
-  height: 30px;
+.column-left,
+.column-right {
+  width: 45%;
 }
+
+textarea#new-notes {
+  border: 1px solid #3567d3;
+  border-radius: 12px;
+  font-size: 1.3em;
+  padding: 3px 10px;
+}
+
+textarea#new-notes:focus {
+  border: 2px solid #3567d3;
+  border-radius: 12px;
+  outline: none;
+  padding: 2px 9px;
+}
+
+.modal-student-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.modal-student-input > span {
+  color: #ff9252;
+}
+
+.modal-student-input > span:hover {
+  font-weight: bolder;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.form-modal > .modal-student-input > button.form-button {
+  background-color: #f0f0f0;
+}
+
+.form-modal > .modal-student-input > button.form-button:hover {
+  cursor: pointer;
+  background-color: #3567d3;
+  color: #f0f0f0;
+}
+
+.form-modal > .modal-student-input > button.form-button:focus {
+  background-color: #3567d3;
+  color: #f0f0f0;
+  outline: none;
+}
+
