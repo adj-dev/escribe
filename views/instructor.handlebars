@@ -2,14 +2,14 @@
   <div id="home">
     <div class="section-header">
       <h3>{{firstName}} {{lastName}}'s Roster</h3>
-      <button data-id="{{id}}" id="student-modal">Add Student</button>
+      <button data-id="{{id}}" class="student-modal"><i class="fas fa-user-plus"></i></button>
     </div>
     <div id="student-list-container">
       {{#if Students}}
       {{#each Students}}
       <div data-id="{{this.id}}" class="list-group-item student">
         <h3>{{this.firstName}} {{this.lastName}}</h3>
-        <button class="btn btn-primary float-right delete">ｘ</button>
+        <button class="student-modal small"><i class="fas fa-times"></i></button>
       </div>
       {{/each}}
       {{/if}}

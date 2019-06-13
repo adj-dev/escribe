@@ -23,12 +23,18 @@ nav {
 
 .brand {
   display: flex;
+  align-items: center;
 }
 
 .brand > h1 {
   font-family: 'Pacifico', cursive;
   padding: 0 20px;
   color: #f0f0f0;
+}
+
+.brand > i {
+  color: #f0f0f0;
+  font-size: 2em;
 }
 
 .links {
