@@ -6,7 +6,7 @@
             Lesson</button>
     </div>
     {{#if Lessons}}
-    <ul id="example-list" class="list-group">
+    <ul id="student-{{this.id}}" class="list-group">
         {{#each Lessons}}
 
         <li data-id="{{this.id}}" class="list-group-item lesson">
@@ -15,7 +15,7 @@
                     <a href="../api/lesson/{{this.id}}">{{this.topic}}</a>
                 </h3>
                 <p class="date">{{this.createdAt}}</p>
-                <button class="btn btn-primary float-right">+</button>
+                <button class="float-right">+</button>
             </span>
         </li>
         {{/each}}

@@ -1,5 +1,6 @@
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
+let selectedStudentId;
 var handleLessonExpand = function () {
   var id = $(this).attr("data-id");
   $(".lesson").css("background-color", "white");
@@ -11,6 +12,7 @@ var handleLessonExpand = function () {
 
 var handleStudentExpand = function () {
   var id = $(this).attr("data-id");
+  selectedStudentId = id;
   $(".student").css("background-color", "white");
   $(".lesson").css("background-color", "white");
   $(this).css("background-color", "whitesmoke");
@@ -94,13 +96,14 @@ $(function () {
     event.preventDefault();
     let topic = $("#topic").val().trim();
     let content = $("#content").val().trim();
+    console.log($(this));
 
-    let id = $("#lesson-modal").attr("data-id");
+    // let id = $(this).attr("data-id");
 
     let body = {
       topic,
       body: content,
-      StudentId: id
+      StudentId: selectedStudentId
     };
 
     let url = "/api/lesson";
@@ -112,8 +115,9 @@ $(function () {
       data: body
     })
       .then(result => {
-        if (result.id) {
-          let { id, topic, createdAt } = req;
+        console.log(result);
+        if (result) {
+          let { id, topic, createdAt, StudentId } = result;
           // append the newly created lesson to the page
           let li = $("<li>");
           li.attr("data-id", id);
@@ -134,7 +138,7 @@ $(function () {
           li.append(span);
 
           // append to div
-          $("#example-list").append(li);
+          $(`#student-${StudentId}`).append(li); // eslint-disable-line
         }
         // hide the modal
         $("#addLessonModal").hide();
@@ -142,9 +146,10 @@ $(function () {
 
 
     // Cancel model
-    $(document).on("click", "#cancel-modal", function () {
-      $("#addStudentModal").hide();
-      $("#addLessonModal").hide();
-    });
+  });
+
+  $(document).on("click", "#cancel-modal", function () {
+    $("#addStudentModal").hide();
+    $("#addLessonModal").hide();
   });
 });
