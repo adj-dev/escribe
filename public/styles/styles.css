@@ -56,7 +56,7 @@ button#lesson-modal {
   box-shadow: 0 0 7px #00000067;
   border-radius: 20px;
   margin: 20px auto;
-  padding: 40px;
+  padding: 20px 40px 40px;
 }
 #introdiv > p > span {
   font-family: "Pacifico", cursive;
@@ -316,4 +316,11 @@ button#add-lesson:focus {
   background-color: #3567d3;
   color: #f0f0f0;
   outline: none;
+}
+
+#logo {
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  color: #3567d3;
 }
