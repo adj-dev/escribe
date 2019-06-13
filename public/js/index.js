@@ -80,8 +80,10 @@ $(function () {
       url,
       data: body
     })
-      .then(() => {
-        href.location = "/";
+      .then(res => {
+        if (res) {
+          document.location.reload(true);
+        }
       });
 
     // hide modal
