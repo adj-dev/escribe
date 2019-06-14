@@ -48,12 +48,7 @@ module.exports = function (passport) {
             console.dir(reply);
             console.log("There");
           }
-        )
-          .catch(err => {
-            if (err) {
-              return;
-            }
-          });
+        );
         db.Instructor.create({
           firstName,
           lastName,
