@@ -27,7 +27,12 @@ router.get("/api/instructor/:id", function (req, res) {
 
   db.Instructor.findOne(condition).then(function (instructor) {
     res.json(instructor);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // Get all student data
@@ -40,7 +45,12 @@ router.get("/api/student/:id", function (req, res) {
 
   db.Student.findOne(condition).then(function (student) {
     res.json(student);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // Get a lesson by id
@@ -52,7 +62,12 @@ router.get("/api/lesson/:id", function (req, res) {
 
   db.Lesson.findOne(condition).then(function (lesson) {
     res.json(lesson);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // Create a new Student
@@ -94,8 +109,18 @@ router.post("/api/student", function (req, res) {
       InstructorId: instructorId
     }).then(student => {
       res.json(student);
+    })
+      .catch(err => {
+        if (err) {
+          return;
+        }
+      });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
     });
-  });
 });
 
 // Create a new Lesson
@@ -103,7 +128,12 @@ router.post("/api/lesson", function (req, res) {
   console.log(req.body);
   db.Lesson.create(req.body).then(function (lesson) {
     res.json(lesson);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // FOR TESTING PURPOSES
@@ -121,8 +151,18 @@ router.post("/new_instructor", function (req, res) {
       UserId: user.id
     }).then(result => {
       res.json(result);
+    })
+      .catch(err => {
+        if (err) {
+          return;
+        }
+      });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
     });
-  });
 });
 
 router.post("/new_student", function (req, res) {
@@ -160,8 +200,18 @@ router.post("/new_student", function (req, res) {
       InstructorId: instructorId
     }).then(student => {
       res.json(student);
+    })
+      .catch(err => {
+        if (err) {
+          return;
+        }
+      });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
     });
-  });
 });
 
 router.post("/new_lesson", function (req, res) {
@@ -174,7 +224,12 @@ router.post("/new_lesson", function (req, res) {
     StudentId
   }).then(lesson => {
     res.json(lesson);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // Edit an Instructor
@@ -187,7 +242,12 @@ router.put("/api/instructor/:id", function (req, res) {
   let condition = { where: { id: id } };
   db.Instructor.update(req.body, condition).then(function (instructor) {
     res.json(instructor);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 // Edit a Student
 router.put("/api/student/:id", function (req, res) {
@@ -199,7 +259,12 @@ router.put("/api/student/:id", function (req, res) {
   let condition = { where: { id: id } };
   db.Student.update(req.body, condition).then(function (student) {
     res.json(student);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 // Edit a Lesson
 router.put("/api/lesson/:id", function (req, res) {
@@ -211,7 +276,12 @@ router.put("/api/lesson/:id", function (req, res) {
   let condition = { where: { id: id } };
   db.Lesson.update(req.body, condition).then(function (lesson) {
     res.json(lesson);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // Delete an example by id
@@ -223,7 +293,12 @@ router.delete("/api/instructor/:id", function (req, res) {
     instructor
   ) {
     res.json(instructor);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // Delete a student by id
@@ -233,7 +308,12 @@ router.delete("/api/student/:id", function (req, res) {
   }
   db.Student.destroy({ where: { id: req.params.id } }).then(function (student) {
     res.json(student);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 // Delete an example by id
@@ -243,7 +323,12 @@ router.delete("/api/lesson/:id", function (req, res) {
   }
   db.Lesson.destroy({ where: { id: req.params.id } }).then(function (lesson) {
     res.json(lesson);
-  });
+  })
+    .catch(err => {
+      if (err) {
+        return;
+      }
+    });
 });
 
 let isNotImposter = function (req) {

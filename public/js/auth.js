@@ -1,7 +1,6 @@
-$(function() {
-  //var attempt = 3; // Variable to count number of attempts.
+$(function () {
   // Below function Executes on click of login button.
-  $(document).on("click", "#login-btn", function(event) {
+  $(document).on("click", "#login-btn", function (event) {
     event.preventDefault();
     let email = $("#login-email")
       .val()
@@ -17,12 +16,12 @@ $(function() {
       url: url,
       data: body
     })
-      .then(function(response) {
+      .then(function (response) {
         if (response.success) {
           location.href = "/";
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         if (error) {
           $(".invalid-login").show();
         }
@@ -30,7 +29,7 @@ $(function() {
   });
 
   // Event listener for `to-signup` button on login form
-  $(document).on("click", "#to-signup", function() {
+  $(document).on("click", "#to-signup", function () {
     // Hide the login form
     $(".container-login").hide();
     // Show the sign-up form
@@ -38,7 +37,7 @@ $(function() {
   });
 
   // Event listener for `login` form link
-  $(document).on("click", "#to-login", function() {
+  $(document).on("click", "#to-login", function () {
     // Hide the sign-up form
     $(".container-signup").hide();
     // Show the login form
@@ -46,7 +45,7 @@ $(function() {
   });
 
   // Event listener for sign-up form submit
-  $(document).on("click", "#signup-btn", function(event) {
+  $(document).on("click", "#signup-btn", function (event) {
     event.preventDefault();
 
     let firstName = $("#first-name")
@@ -79,21 +78,20 @@ $(function() {
       url: url,
       data: body
     })
-      .then(function(response) {
+      .then(function (response) {
         if (response) {
-          console.log(response);
           $.ajax({
             type: "POST",
             url: "/whodis",
             data: { email: response.email, password: response.password }
           })
             // redirect to homepage if successful
-            .then(function(response) {
+            .then(function (response) {
               if (response.success) {
                 location.href = "/";
               }
             })
-            .catch(function(error) {
+            .catch(function (error) {
               if (error) {
                 $("#login-message").html(
                   "Oops! Something went wrong, try logging in."
@@ -101,15 +99,10 @@ $(function() {
               }
             });
         }
-
-        // The code below was an attempt for automatic login after signup
-
-        // automatically log in if successful
-        // console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         if (error) {
-          return console.log(err);
+          return;
         }
       });
   });

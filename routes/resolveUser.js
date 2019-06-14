@@ -9,33 +9,31 @@ const resolveUser = (req, res, next) => {
       include: [{ model: db.Student, include: db.Lesson }],
       where: { UserId: user.id }
     };
-    db.Instructor.findOne(condition).then(function(instructor) {
+    db.Instructor.findOne(condition).then(function (instructor) {
       //console.log(instructor.dataValues);
       req.user = { isInstructor: true, user: instructor.dataValues };
       next();
-    });
+    })
+      .catch(err => {
+        if (err) {
+          return;
+        }
+      });
   } else {
     condition = {
       include: [db.Lesson],
       where: { UserId: user.id }
     };
-    db.Student.findOne(condition).then(function(student) {
+    db.Student.findOne(condition).then(function (student) {
       req.user = { isInstructor: false, user: student.dataValues };
       next();
-    });
+    })
+      .catch(err => {
+        if (err) {
+          return;
+        }
+      });
   }
-
-  //   if (req.dataValues.isInstructor) {
-  //     db.Instructor.findbyPk(req.user.id).then(insData => {
-  //       req.InstructorData = insData;
-  //       next();
-  //     });
-  //   } else {
-  //     db.Student.findbyPk(req.user.id).then(studData => {
-  //       req.user.details = studData;
-  //       next();
-  //     });
-  //   }
 };
 
 module.exports = resolveUser;
