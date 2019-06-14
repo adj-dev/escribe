@@ -95,8 +95,10 @@ router.post("/api/student", function (req, res) {
           "<br><br>Click <a href='https://pure-wave-91989.herokuapp.com/' target='_blank'>here</a> to log in."
       },
       function (err, reply) {
+        if (err) {
+          return;
+        }
         console.dir(reply);
-        console.log("There");
       }
     );
     db.Student.create({
@@ -186,8 +188,10 @@ router.post("/new_student", function (req, res) {
           "<br><br>Click <a href='https://pure-wave-91989.herokuapp.com/' target='_blank'>here</a> to log in."
       },
       function (err, reply) {
+        if (err) {
+          return;
+        }
         console.dir(reply);
-        console.log("There");
       }
     );
     db.Student.create({
