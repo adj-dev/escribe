@@ -22,7 +22,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sendmail": "^1.4.1",
-    "sequelize": "^5.8.7"
+    "sequelize": "^5.15.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
